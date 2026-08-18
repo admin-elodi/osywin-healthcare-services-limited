@@ -10,8 +10,8 @@ const Home = () => {
   // ✅ Toggle visibility of sections here
   
   const showHero = true;
-  const showCarePathway = false;
-  const showTrustAssurance = false;
+  const showCarePathway = true;
+  const showTrustAssurance = true;
 
   
 

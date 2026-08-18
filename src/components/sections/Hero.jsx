@@ -1,17 +1,24 @@
 // src/components/Hero.jsx
 import { Link } from "react-router-dom";
 import { useState } from "react";
+import { UserCheck, Lock, BadgeCheck } from "lucide-react";
 import healingVideo from "@/assets/videos/cool.webm";
 
 export default function Hero() {
   const [showMentalHealthModal, setShowMentalHealthModal] = useState(false);
   const [showRecoveryModal, setShowRecoveryModal] = useState(false);
 
+  const trustPoints = [
+    { icon: UserCheck, label: "Licensed & Experienced" },
+    { icon: Lock, label: "Confidential & Secure" },
+    { icon: BadgeCheck, label: "Evidence-Based Care" },
+  ];
+
   return (
     <>
       <section
         id="home"
-        className="w-full min-h-screen md:h-[95vh] flex items-center pt-24 relative overflow-hidden bg-slate-950"
+        className="w-full flex items-center pt-28 pb-10 md:pt-24 md:pb-14 relative overflow-hidden bg-slate-950"
       >
         {/* Video Background */}
         <video
@@ -26,46 +33,56 @@ export default function Hero() {
           Your browser does not support the video tag.
         </video>
 
-        {/* Subtle Gradient Overlay */}
-        <div className="absolute inset-0 bg-gradient-to-br from-slate-950/70 via-slate-900/50 to-slate-950/40" />
+        {/* Stronger scrim — text authority no longer depends on video brightness */}
+        <div className="absolute inset-0 bg-gradient-to-br from-slate-950/95 via-slate-950/80 to-blue-950/70" />
+        <div className="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/10 to-transparent" />
 
         {/* Content */}
-        <div className="relative z-10 max-w-5xl px-6 md:px-12 mt-5">
+        <div className="relative z-10 max-w-5xl px-6 md:px-12">
           <Link
             to="/about-us"
-            className="inline-flex items-center gap-2 mb-8 px-4 py-3 text-sm font-medium text-slate-200 border-1 border-slate-500/70 rounded-lg hover:border-slate-400/50 hover:bg-slate-800/30 transition-all duration-300"
+            className="inline-flex items-center gap-2 mb-3 sm:mb-6 px-4 py-2 sm:py-2.5 text-sm font-medium text-slate-100 border border-slate-400/50 rounded-full hover:border-blue-400 hover:bg-white/5 transition-all duration-300"
           >
-            <span className="w-1.5 h-1.5 bg-blue-400 rounded-lg cursor-pointer" />
+            <span className="w-1.5 h-1.5 bg-blue-400 rounded-full" />
             About OSYWIN
           </Link>
 
-          <h1 className="text-white/60 text-[17px] font-semibold md:text-5xl lg:text-xl font-light leading-tight tracking-tight mb-4">
-            WINN Psychiatry & Mental Health Services
+          <h1 className="text-white text-3xl sm:text-4xl md:text-5xl font-bold leading-[1.1] tracking-tight mb-3 sm:mb-4 max-w-3xl">
+            WINN Psychiatry &amp; Mental Health Services
           </h1>
 
-          <div className="w-70 h-1 bg-gradient-to-r from-blue-500 to-transparent mb-6" />
+          <div className="w-24 h-1.5 rounded-full bg-gradient-to-r from-blue-500 to-blue-500/0 mb-3 sm:mb-4" />
 
-          <p className="text-justify text-slate-200 text-lg md:text-[17px] leading-relaxed max-w-3xl font-light">
-            Compassionate, modern and professionally delivered psychiatric care, medication management, child & adolescent support, crisis stabilization and telepsychiatry.
+          <p className="text-slate-100 text-base sm:text-lg leading-relaxed max-w-2xl font-light">
+            Compassionate, modern and professionally delivered psychiatric care, medication management, child &amp; adolescent support, crisis stabilization and telepsychiatry.
           </p>
 
-          <p className="text-slate-300 text-base md:text-lg mt-8 max-w-2xl font-light">
-            <div>
-              Also home to...{" "}
-            </div>
-            <span className="font-semibold text-red-400 text-[16px] border-b border-white/50">
-              Renewed Wellness & Recovery Services
-            </span>
-            <br />
-            <span className="text-slate-400 italic text-sm">
+          <div className="mt-3 sm:mt-4 inline-flex flex-col gap-1 max-w-2xl border-l-2 border-red-400/60 pl-4">
+            <p className="text-slate-300 text-sm sm:text-base font-light">
+              Also home to{" "}
+              <span className="font-semibold text-red-400">
+                Renewed Wellness &amp; Recovery Services
+              </span>
+            </p>
+            <p className="text-slate-400 italic text-sm hidden sm:block">
               "Where healing begins and lives are renewed."
-            </span>
-          </p>
+            </p>
+          </div>
 
-          <div className="mt-12 flex flex-col sm:flex-row gap-4">
+          {/* Trust strip — hidden on the smallest screens to keep CTAs above the fold */}
+          <div className="hidden sm:flex mt-4 sm:mt-6 flex-wrap items-center gap-x-8 gap-y-2">
+            {trustPoints.map(({ icon: Icon, label }) => (
+              <div key={label} className="flex items-center gap-2 text-slate-200">
+                <Icon size={18} className="text-blue-400 shrink-0" />
+                <span className="text-sm font-medium">{label}</span>
+              </div>
+            ))}
+          </div>
+
+          <div className="mt-4 sm:mt-6 flex flex-col sm:flex-row gap-3 sm:gap-4">
             <button
               onClick={() => setShowMentalHealthModal(true)}
-              className="cursor-pointer backdrop-blur-md group px-8 py-3.5 bg-blue-600/30 text-white font-medium rounded-lg hover:bg-blue-700 transition-all duration-300 shadow-lg hover:shadow-xl hover:scale-105"
+              className="cursor-pointer group px-8 py-3 sm:py-3.5 bg-blue-600 text-white font-semibold rounded-lg hover:bg-blue-500 transition-all duration-300 shadow-lg shadow-blue-950/50 hover:shadow-xl hover:shadow-blue-900/40 hover:scale-[1.03]"
             >
               Book Appointment
               <span className="ml-2 group-hover:translate-x-1 transition-transform inline-block">→</span>
@@ -73,7 +90,7 @@ export default function Hero() {
 
             <button
               onClick={() => setShowRecoveryModal(true)}
-              className="cursor-pointer group px-8 py-3.5 text-white font-medium rounded-lg bg-red-600/30 hover:bg-red-500/40 transition-all duration-300"
+              className="cursor-pointer group px-8 py-3 sm:py-3.5 text-white font-semibold rounded-lg border-2 border-white/70 hover:border-white hover:bg-white/10 transition-all duration-300"
             >
               Explore Programs
               <span className="ml-2 group-hover:translate-x-1 transition-transform inline-block">→</span>

@@ -1,13 +1,13 @@
 // src/pages/AboutUs.jsx
 import React from "react";
-import plainBg from '@/assets/images/peace.webp'; // Adjust path if your folder structure differs (e.g., src/assets/images/plain.webp)
+import aboutBg from '@/assets/images/about-family.jpg';
 
 export default function AboutUs() {
   return (
     <main 
       className="w-full min-h-screen pt-28 pb-20 relative overflow-hidden"
       style={{
-        backgroundImage: `url(${plainBg})`,
+        backgroundImage: `url(${aboutBg})`,
         backgroundSize: 'cover',
         backgroundPosition: 'center',
         backgroundRepeat: 'no-repeat',

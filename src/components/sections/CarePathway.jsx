@@ -6,6 +6,13 @@ import {
   ShieldCheck,
 } from "lucide-react";
 
+const ACCENT_STYLES = {
+  blue: "bg-blue-100 text-blue-600",
+  indigo: "bg-indigo-100 text-indigo-600",
+  red: "bg-red-100 text-red-600",
+  emerald: "bg-emerald-100 text-emerald-600",
+};
+
 export default function CarePathway() {
   const steps = [
     {
@@ -59,14 +66,19 @@ export default function CarePathway() {
           {steps.map((step, index) => (
             <div
               key={index}
-              className="bg-white rounded-2xl p-8 shadow-sm hover:shadow-xl transition-shadow duration-300 h-full"
+              className="bg-white rounded-2xl p-8 shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all duration-300 h-full"
             >
               {/* Icon */}
               <div
-                className={`w-14 h-14 rounded-xl flex items-center justify-center mb-6 bg-${step.accent}-100 text-${step.accent}-600`}
+                className={`w-14 h-14 rounded-xl flex items-center justify-center mb-6 ${ACCENT_STYLES[step.accent]}`}
               >
                 {step.icon}
               </div>
+
+              {/* Step number */}
+              <span className="text-xs font-semibold tracking-widest text-gray-400 uppercase">
+                Step {index + 1}
+              </span>
 
               {/* Content */}
               <h3 className="text-xl font-semibold text-gray-900 mb-3">

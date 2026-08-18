@@ -1,6 +1,6 @@
 // src/pages/Winn.jsx
 import React from "react";
-import diceVideo from '@/assets/videos/healing.webm'; // Adjust path if your folder structure differs (e.g., src/assets/videos/dice.webm)
+import winnBg from '@/assets/images/winn-support.jpg';
 
 const winnPrograms = [
   {
@@ -54,17 +54,15 @@ const winnPrograms = [
 
 export default function Winn() {
   return (
-    <section className="w-full py-24 px-4 md:px-8 lg:px-16 relative overflow-hidden min-h-screen">
-      {/* Video Background */}
-      <video
-        autoPlay
-        loop
-        muted
-        playsInline
-        className="absolute inset-0 w-full h-full object-cover"
-        src={diceVideo}
-      />
-
+    <section
+      className="w-full py-24 px-4 md:px-8 lg:px-16 relative overflow-hidden min-h-screen"
+      style={{
+        backgroundImage: `url(${winnBg})`,
+        backgroundSize: 'cover',
+        backgroundPosition: 'center',
+        backgroundRepeat: 'no-repeat',
+      }}
+    >
       {/* Optional subtle overlay for better text readability */}
       <div className="absolute inset-0 bg-black/30" />
 

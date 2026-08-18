@@ -1,6 +1,6 @@
 // src/pages/Renewed.jsx
 import React from "react";
-import wellnessVideo from '@/assets/videos/health.webm'; // Adjust path if your folder structure differs (e.g., src/assets/videos/wellness.webm)
+import renewedBg from '@/assets/images/renewed-sunrise.jpg';
 
 const renewedPrograms = [
   {
@@ -33,18 +33,16 @@ const renewedPrograms = [
 
 export default function Renewed() {
   return (
-    <section className="w-full py-24 px-4 md:px-8 lg:px-16 relative overflow-hidden min-h-screen">
-      {/* Video Background */}
-      <video
-        autoPlay
-        loop
-        muted
-        playsInline
-        className="absolute inset-0 w-full h-full object-cover"
-        src={wellnessVideo}
-      />
-
-      {/* Subtle overlay for readability on varying video brightness */}
+    <section
+      className="w-full py-24 px-4 md:px-8 lg:px-16 relative overflow-hidden min-h-screen"
+      style={{
+        backgroundImage: `url(${renewedBg})`,
+        backgroundSize: 'cover',
+        backgroundPosition: 'center',
+        backgroundRepeat: 'no-repeat',
+      }}
+    >
+      {/* Subtle overlay for readability on varying image brightness */}
       <div className="absolute inset-0 bg-black/35" />
 
       <div className="max-w-7xl mx-auto relative z-10">
