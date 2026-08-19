@@ -34,7 +34,7 @@ export default function Hero() {
         </video>
 
         {/* Stronger scrim — text authority no longer depends on video brightness */}
-        <div className="absolute inset-0 bg-gradient-to-br from-slate-950/95 via-slate-950/80 to-blue-950/70" />
+        <div className="absolute inset-0 bg-gradient-to-br from-slate-950/70 via-slate-950/70 to-blue-950/80" />
         <div className="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/10 to-transparent" />
 
         {/* Content */}

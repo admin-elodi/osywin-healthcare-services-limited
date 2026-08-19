@@ -1,7 +1,7 @@
 // src/components/Footer.jsx
 import React from "react";
 import { Link } from "react-router-dom";
-import { Mail, Phone, MapPin, Linkedin } from "lucide-react";
+import { Mail, Phone, MapPin, Linkedin, ArrowUp } from "lucide-react";
 import logo from "@/assets/images/wellness-logo.webp";
 
 const XIcon = ({ size = 18, className = "" }) => (
@@ -25,15 +25,22 @@ export default function Footer() {
   return (
     <footer
       id="contact"
-      className="bg-slate-950 text-slate-300 pt-20 pb-16 border-t border-slate-800"
+      className="relative bg-slate-950 text-slate-300 pt-20 pb-16 border-t border-slate-800"
     >
-      <div className="max-w-7xl mx-auto px-6 grid grid-cols-1 md:grid-cols-4 gap-12">
+      {/* Subtle accent line along the very top edge */}
+      <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-blue-500/50 to-transparent" />
+
+      <div className="max-w-7xl mx-auto px-6 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-[1.4fr_1fr_1fr_1fr] gap-12">
 
         {/* Brand */}
-        <div className="space-y-8">
-          <div className="flex items-center gap-4">
-            <img src={logo} alt="OSYWIN Logo" className="h-12 w-auto" />
-            <h2 className="text-sm font-semibold text-white">
+        <div className="space-y-8 min-w-0">
+          <div className="flex items-center gap-1.5 sm:gap-2 lg:gap-2.5">
+            <img
+              src={logo}
+              alt="OSYWIN Logo"
+              className="h-9 sm:h-9 lg:h-8 xl:h-10 w-auto flex-shrink-0"
+            />
+            <h2 className="text-[clamp(11px,3.1vw,14px)] sm:text-[10px] lg:text-[10px] xl:text-[13px] font-semibold text-white whitespace-nowrap leading-tight">
               OSYWIN Healthcare Services Limited
             </h2>
           </div>
@@ -48,7 +55,7 @@ export default function Footer() {
               href="https://x.com/"
               target="_blank"
               rel="noopener noreferrer"
-              className="text-slate-400 hover:text-blue-400 transition-colors duration-300 p-2 hover:bg-white/5 rounded-lg"
+              className="text-slate-400 hover:text-blue-400 hover:scale-110 transition-all duration-300 p-2 hover:bg-white/5 rounded-lg"
               aria-label="Follow on X"
             >
               <XIcon size={18} />
@@ -58,7 +65,7 @@ export default function Footer() {
               href="https://www.linkedin.com/"
               target="_blank"
               rel="noopener noreferrer"
-              className="text-slate-400 hover:text-blue-400 transition-colors duration-300 p-2 hover:bg-white/5 rounded-lg"
+              className="text-slate-400 hover:text-blue-400 hover:scale-110 transition-all duration-300 p-2 hover:bg-white/5 rounded-lg"
               aria-label="Follow on LinkedIn"
             >
               <Linkedin size={18} />
@@ -117,7 +124,9 @@ export default function Footer() {
           <div className="space-y-6 text-sm text-slate-300">
             <div className="flex items-start gap-3 hover:text-white transition-colors duration-200 group">
               <Phone size={16} className="mt-1 text-red-400 shrink-0" />
-              <span className="font-medium">302-696-6238</span>
+              <a href="tel:+13026966238" className="font-medium hover:text-blue-300 hover:underline">
+                302-696-6238
+              </a>
             </div>
 
             <div className="flex items-start gap-3 hover:text-white transition-colors duration-200 group">
@@ -127,10 +136,15 @@ export default function Footer() {
 
             <div className="flex items-start gap-3 hover:text-white transition-colors duration-200 group">
               <MapPin size={16} className="mt-1 text-red-400 shrink-0" />
-              <span className="leading-relaxed">
+              <a
+                href="https://www.google.com/maps/search/?api=1&query=113+Gloucester+Blvd+Lower+Level+Suite+Middletown+DE+19709"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="leading-relaxed hover:text-blue-300 hover:underline"
+              >
                 113 Gloucester Blvd, Lower Level Suite<br />
-                <span className="font-medium text-slate-200">Middletown, DE 19709, USA</span>
-              </span>
+                <span className="font-medium text-slate-200 group-hover:text-blue-300">Middletown, DE 19709, USA</span>
+              </a>
             </div>
           </div>
         </div>
@@ -156,13 +170,22 @@ export default function Footer() {
           </Link>
         </div>
 
-        <div className="text-center mt-12 text-xs text-slate-500 tracking-wide">
+        <div className="text-center mt-12 text-[16px] text-slate-500 tracking-wide">
           <p className="font-medium">
             © {new Date().getFullYear()} OSYWIN Healthcare Services Limited
           </p>
           <p className="text-[10px] mt-3 font-medium text-slate-600 hover:text-slate-400 transition-colors duration-200">
             Site Design by JungleX: +2348136573235
           </p>
+
+          <button
+            onClick={scrollToTop}
+            className="mt-8 inline-flex items-center gap-2 mx-auto text-xs font-medium text-slate-400 hover:text-blue-400 border border-slate-800 hover:border-blue-400/40 rounded-full py-2 px-4 transition-all duration-300 hover:-translate-y-0.5"
+            aria-label="Back to top"
+          >
+            <ArrowUp size={14} />
+            Back to top
+          </button>
         </div>
       </div>
     </footer>

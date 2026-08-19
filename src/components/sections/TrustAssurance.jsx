@@ -1,14 +1,14 @@
 import React from "react";
 import {
-  UserCheck,
-  Lock,
-  BadgeCheck,
-  HeartHandshake,
   Award,
   ShieldCheck,
   FileCheck,
   Heart,
 } from "lucide-react";
+
+// Section background — a cool, calm, light sky photo. See
+// README-CARD-IMAGES.txt for the download link and licensing.
+import trustBackground from "@/assets/images/trust-background.jpg";
 
 // Photos live in src/assets/images/cards/ — see README-CARD-IMAGES.txt for
 // download links, licensing, and the exact filenames expected below.
@@ -19,16 +19,16 @@ import compassionateCareImg from "@/assets/images/cards/compassionate-care.jpg";
 
 function CardArt({ image, alt, AccentIcon }) {
   return (
-    <div className="relative h-40 md:h-44 overflow-hidden bg-white/5">
+    <div className="relative h-40 md:h-44 overflow-hidden bg-slate-100">
       <img
         src={image}
         alt={alt}
         className="absolute inset-0 w-full h-full object-cover"
         loading="lazy"
       />
-      {/* Dark scrim to match the section's black/gray gradient and keep the badge legible */}
-      <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/10 to-black/0" />
-      <div className="absolute bottom-3 right-3 w-7 h-7 rounded-full bg-white/10 backdrop-blur-sm shadow-sm flex items-center justify-center text-red-300">
+      {/* Gentle bottom scrim so the accent badge stays readable over any photo */}
+      <div className="absolute inset-0 bg-gradient-to-t from-black/45 via-black/0 to-black/0" />
+      <div className="absolute bottom-3 right-3 w-7 h-7 rounded-full bg-white shadow-sm flex items-center justify-center text-red-600">
         <AccentIcon size={13} strokeWidth={2} />
       </div>
     </div>
@@ -38,10 +38,9 @@ function CardArt({ image, alt, AccentIcon }) {
 export default function TrustAssurance() {
   const assurances = [
     {
-      icon: <UserCheck size={28} />,
-      title: "Licensed & Experienced Professionals",
+      title: "Licensed Professionals",
       description:
-        "Our services are delivered by qualified mental health and recovery professionals committed to ethical, evidence-based care.",
+        "Delivered by qualified, experienced mental health and recovery professionals who are committed to ethical, evidence-based care.",
       art: {
         image: licensedProfessionalsImg,
         alt: "Confident, licensed medical professional",
@@ -49,32 +48,29 @@ export default function TrustAssurance() {
       },
     },
     {
-      icon: <Lock size={28} />,
-      title: "Confidential & Secure Care",
+      title: "Confidential Care",
       description:
-        "Your personal information and conversations are handled with strict confidentiality and respect for your privacy.",
+        "Your personal information and conversations are always handled with strict confidentiality and full respect for your privacy.",
       art: {
         image: confidentialSecureImg,
-        alt: "Padlock symbolizing confidentiality and data security",
+        alt: "A cozy, private reading nook symbolizing a quiet, confidential space",
         AccentIcon: ShieldCheck,
       },
     },
     {
-      icon: <BadgeCheck size={28} />,
-      title: "Evidence-Based Treatment",
+      title: "Proven Treatment",
       description:
-        "Our approach is grounded in clinically proven methods designed to support long-term mental wellness and recovery.",
+        "Our approach is grounded in clinically proven methods that support long-term mental wellness and lasting recovery.",
       art: {
         image: evidenceBasedImg,
-        alt: "Researcher examining clinical data in a lab setting",
+        alt: "A stack of books symbolizing research-backed, clinically proven methods",
         AccentIcon: FileCheck,
       },
     },
     {
-      icon: <HeartHandshake size={28} />,
-      title: "Compassionate, Person-Centered Approach",
+      title: "Compassionate Care",
       description:
-        "We treat every individual with dignity, empathy, and understanding — recognizing the whole person, not just symptoms.",
+        "We treat every individual with genuine dignity, empathy, and understanding — recognizing the whole person, not just symptoms.",
       art: {
         image: compassionateCareImg,
         alt: "Hands held together in a gesture of compassion and support",
@@ -84,15 +80,27 @@ export default function TrustAssurance() {
   ];
 
   return (
-    <section className="w-full bg-gradient-to-b from-gray-900 to-black py-24">
-      <div className="max-w-6xl mx-auto px-6">
+    <section
+      className="w-full py-24 relative overflow-hidden"
+      style={{
+        backgroundImage: `url(${trustBackground})`,
+        backgroundSize: "cover",
+        backgroundPosition: "center",
+        backgroundRepeat: "no-repeat",
+      }}
+    >
+      {/* Cool, dark-toned scrim — dark enough to let the sky and clouds read clearly, still cool/calm rather than moody */}
+      <div className="absolute inset-0 bg-slate-900/45" />
+      <div className="absolute inset-0 bg-gradient-to-b from-slate-900/20 via-blue-950/35 to-slate-900/55" />
+
+      <div className="max-w-6xl mx-auto px-6 relative z-10">
 
         {/* Section Header */}
         <div className="text-center mb-16">
           <h2 className="text-3xl md:text-4xl font-bold text-white mb-5">
             Care You Can Trust
           </h2>
-          <p className="text-lg text-gray-400 max-w-3xl mx-auto leading-relaxed">
+          <p className="text-lg text-slate-200 max-w-3xl mx-auto leading-relaxed">
             Choosing mental health or recovery support is a deeply personal
             decision. At OSYWIN, trust, safety, and professional integrity guide
             every aspect of care.
@@ -104,23 +112,18 @@ export default function TrustAssurance() {
           {assurances.map((item, index) => (
             <div
               key={index}
-              className="bg-gray-800/70 backdrop-blur-md rounded-2xl overflow-hidden hover:bg-gray-800 transition-colors duration-300 h-full flex flex-col"
+              className="bg-white/80 backdrop-blur-md border border-white/60 rounded-2xl overflow-hidden shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all duration-300 h-full flex flex-col"
             >
               {/* Illustration — bleeds to the card's top and side edges */}
               <CardArt {...item.art} />
 
-              <div className="p-8 pt-6 flex flex-col flex-1">
-                {/* Icon */}
-                <div className="w-14 h-14 flex items-center justify-center rounded-xl bg-red-600/20 text-red-400 mb-6">
-                  {item.icon}
-                </div>
-
+              <div className="p-6 pt-5 flex flex-col flex-1">
                 {/* Content */}
-                <h3 className="text-lg font-semibold text-white mb-3">
+                <h3 className="text-sm font-semibold text-slate-900 mb-3 whitespace-nowrap overflow-hidden">
                   {item.title}
                 </h3>
 
-                <p className="text-gray-400 leading-relaxed text-sm">
+                <p className="text-slate-600 leading-relaxed text-sm text-justify">
                   {item.description}
                 </p>
               </div>

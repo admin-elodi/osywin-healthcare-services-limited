@@ -1,12 +1,20 @@
 // src/components/Header.jsx
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
 import logo from "@/assets/images/wellness-logo.webp";
 import { Menu, X } from "lucide-react";
 
 export default function Header() {
   const [isOpen, setIsOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
   const location = useLocation();
+
+  useEffect(() => {
+    const onScroll = () => setScrolled(window.scrollY > 40);
+    onScroll();
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
+  }, [location.pathname]);
 
   const navItems = [
     { path: "/", label: "Home" },
@@ -20,8 +28,13 @@ export default function Header() {
   const closeMenu = () => setIsOpen(false);
 
   return (
-    <header className="w-full fixed top-0 left-0 z-50 backdrop-blur-xl bg-white/10 border-b border-white/20 shadow-sm/50">
-      
+    <header
+      className={`w-full fixed top-0 left-0 z-50 backdrop-blur-xl border-b transition-colors duration-300 ${
+        scrolled
+          ? "bg-slate-950/95 border-white/10 shadow-lg shadow-black/20"
+          : "bg-white/10 border-white/20 shadow-sm/50"
+      }`}
+    >
       <div className="max-w-7xl mx-auto flex items-center justify-between py-4 px-4 sm:px-5 md:px-6">
         {/* Logo + Brand */}
         <Link
