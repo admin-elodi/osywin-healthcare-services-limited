@@ -33,7 +33,7 @@ export default function Footer() {
         <div className="space-y-8">
           <div className="flex items-center gap-4">
             <img src={logo} alt="OSYWIN Logo" className="h-12 w-auto" />
-            <h2 className="text-xl font-semibold text-white">
+            <h2 className="text-sm font-semibold text-white">
               OSYWIN Healthcare Services Limited
             </h2>
           </div>

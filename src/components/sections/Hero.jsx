@@ -47,7 +47,7 @@ export default function Hero() {
             About OSYWIN
           </Link>
 
-          <h1 className="text-white text-3xl sm:text-4xl md:text-5xl font-bold leading-[1.1] tracking-tight mb-3 sm:mb-4 max-w-3xl">
+          <h1 className="text-white text-3xl sm:text-4xl md:text-4xl font-bold leading-[1.1] tracking-tight mb-3 sm:mb-4 max-w-3xl">
             WINN Psychiatry &amp; Mental Health Services
           </h1>
 
