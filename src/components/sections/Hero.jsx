@@ -1,6 +1,24 @@
 // src/components/Hero.jsx
 import { useState } from "react";
-import { UserCheck, Lock, BadgeCheck, Users } from "lucide-react";
+import {
+  UserCheck,
+  Lock,
+  BadgeCheck,
+  Users,
+  X,
+  User,
+  Phone,
+  Mail,
+  MessageSquare,
+  ShieldCheck,
+  Clock,
+  Calendar,
+  Sparkles,
+  HeartHandshake,
+  Stethoscope,
+  CheckCircle2,
+  ArrowRight,
+} from "lucide-react";
 import healingVideo from "@/assets/videos/cool.webm";
 
 export default function Hero() {
@@ -43,8 +61,8 @@ export default function Hero() {
             WINN Psychiatry &amp; Mental Health Services
           </h1>
 
-          <p className="text-slate-100 font-light whitespace-nowrap text-[clamp(8.5px,2.6vw,16px)] mb-5 sm:mb-4">
-            Compassionate care, medication management &amp; telepsychiatry.
+          <p className="text-slate-100 text-base sm:text-lg leading-relaxed max-w-2xl font-light text-justify mb-5 sm:mb-4">
+            Compassionate, modern and professionally delivered psychiatric care, medication management, child &amp; adolescent support, crisis stabilization and telepsychiatry.
           </p>
 
           <div className="w-24 h-1.5 rounded-full bg-gradient-to-r from-blue-500 to-blue-500/0" />
@@ -56,7 +74,7 @@ export default function Hero() {
                 Renewed Wellness &amp; Recovery Services
               </span>
             </p>
-            <p className="text-slate-400 italic text-sm hidden sm:block">
+            <p className="text-slate-400 italic text-sm">
               "Where healing begins and lives are renewed."
             </p>
           </div>
@@ -140,80 +158,113 @@ function MentalHealthBookingModal({ onClose }) {
   };
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center bg-slate-950/80 backdrop-blur-sm px-4 py-8 overflow-y-auto">
-      <div className="relative w-full max-w-lg rounded-2xl bg-white p-8 md:p-10 shadow-2xl max-h-[90vh] overflow-y-auto">
-        <button
-          onClick={onClose}
-          className="absolute right-6 top-6 text-slate-400 hover:text-slate-700 transition text-2xl"
-        >
-          ✕
-        </button>
-
+    <div className="fixed inset-0 z-50 flex items-center justify-center bg-slate-950/75 backdrop-blur-sm px-4 py-8 overflow-y-auto">
+      <div className="relative w-full max-w-lg rounded-3xl bg-white shadow-2xl max-h-[90vh] overflow-y-auto">
         {submitted ? (
-          <div className="text-center py-16">
-            <div className="text-6xl mb-6 animate-bounce">✓</div>
+          <div className="text-center py-20 px-8">
+            <div className="w-20 h-20 mx-auto mb-6 rounded-full bg-blue-50 flex items-center justify-center">
+              <CheckCircle2 size={40} className="text-blue-600" />
+            </div>
             <h2 className="text-2xl font-semibold text-slate-900 mb-3">
-              Appointment Booked
+              You're all set!
             </h2>
-            <p className="text-slate-600 font-light">
-              We'll reach out shortly to confirm your details.
+            <p className="text-slate-500 font-light max-w-xs mx-auto">
+              We're opening WhatsApp so you can send your details — we'll reach out shortly to confirm.
             </p>
           </div>
         ) : (
           <>
-            <h2 className="text-3xl md:text-xl font-semibold text-slate-900 mb-2">
-              Mental Health Appointment
-            </h2>
-            <p className="text-slate-500 font-light mb-8">
-              Let's get you connected with the right care.
-            </p>
+            {/* Header banner */}
+            <div className="relative bg-gradient-to-br from-blue-600 to-indigo-700 px-7 sm:px-9 pt-8 pb-9 rounded-t-3xl overflow-hidden">
+              <div className="absolute -top-10 -right-10 w-40 h-40 rounded-full bg-white/10 blur-2xl pointer-events-none" />
 
-            <form onSubmit={handleSubmit} className="space-y-5">
-              <div>
+              <button
+                onClick={onClose}
+                aria-label="Close"
+                className="absolute right-5 top-5 w-9 h-9 flex items-center justify-center rounded-full bg-white/10 hover:bg-white/20 text-white transition"
+              >
+                <X size={18} />
+              </button>
+
+              <div className="w-12 h-12 rounded-2xl bg-white/15 backdrop-blur flex items-center justify-center mb-4">
+                <Calendar size={24} className="text-white" />
+              </div>
+              <h2 className="text-2xl font-bold text-white mb-1.5">
+                Book Your Appointment
+              </h2>
+              <p className="text-blue-100 font-light text-sm leading-relaxed max-w-sm">
+                Take the first step toward feeling better — we're here to listen, without judgment.
+              </p>
+            </div>
+
+            {/* Trust strip */}
+            <div className="flex flex-wrap items-center justify-center gap-x-5 gap-y-2 px-6 py-4 border-b border-slate-100 bg-slate-50/70">
+              <span className="flex items-center gap-1.5 text-[11px] sm:text-xs font-medium text-slate-500">
+                <ShieldCheck size={14} className="text-blue-500" /> Confidential
+              </span>
+              <span className="flex items-center gap-1.5 text-[11px] sm:text-xs font-medium text-slate-500">
+                <Clock size={14} className="text-blue-500" /> Fast Response
+              </span>
+              <span className="flex items-center gap-1.5 text-[11px] sm:text-xs font-medium text-slate-500">
+                <UserCheck size={14} className="text-blue-500" /> Licensed Providers
+              </span>
+            </div>
+
+            <form onSubmit={handleSubmit} className="p-7 sm:p-9 pt-6 space-y-4">
+              <div className="relative">
+                <User size={17} className="absolute left-3.5 top-1/2 -translate-y-1/2 text-slate-400" />
                 <input
                   required
                   type="text"
                   placeholder="Full Name"
                   value={name}
                   onChange={(e) => setName(e.target.value)}
-                  className="w-full rounded-lg border border-slate-200 px-4 py-3 text-slate-900 placeholder:text-slate-400 focus:border-blue-500 focus:ring-2 focus:ring-blue-500/20 outline-none transition"
+                  className="w-full rounded-xl border border-slate-200 pl-11 pr-4 py-3 text-slate-900 placeholder:text-slate-400 focus:border-blue-500 focus:ring-2 focus:ring-blue-500/20 outline-none transition"
                 />
               </div>
-              <div>
+              <div className="relative">
+                <Phone size={17} className="absolute left-3.5 top-1/2 -translate-y-1/2 text-slate-400" />
                 <input
                   required
                   type="tel"
                   placeholder="Phone Number"
                   value={phone}
                   onChange={(e) => setPhone(e.target.value)}
-                  className="w-full rounded-lg border border-slate-200 px-4 py-3 text-slate-900 placeholder:text-slate-400 focus:border-blue-500 focus:ring-2 focus:ring-blue-500/20 outline-none transition"
+                  className="w-full rounded-xl border border-slate-200 pl-11 pr-4 py-3 text-slate-900 placeholder:text-slate-400 focus:border-blue-500 focus:ring-2 focus:ring-blue-500/20 outline-none transition"
                 />
               </div>
-              <div>
+              <div className="relative">
+                <Mail size={17} className="absolute left-3.5 top-1/2 -translate-y-1/2 text-slate-400" />
                 <input
                   type="email"
                   placeholder="Email (optional)"
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
-                  className="w-full rounded-lg border border-slate-200 px-4 py-3 text-slate-900 placeholder:text-slate-400 focus:border-blue-500 focus:ring-2 focus:ring-blue-500/20 outline-none transition"
+                  className="w-full rounded-xl border border-slate-200 pl-11 pr-4 py-3 text-slate-900 placeholder:text-slate-400 focus:border-blue-500 focus:ring-2 focus:ring-blue-500/20 outline-none transition"
                 />
               </div>
-              <div>
+              <div className="relative">
+                <MessageSquare size={17} className="absolute left-3.5 top-3.5 text-slate-400" />
                 <textarea
                   placeholder="How can we help you today?"
                   rows={4}
                   value={message}
                   onChange={(e) => setMessage(e.target.value)}
-                  className="w-full rounded-lg border border-slate-200 px-4 py-3 text-slate-900 placeholder:text-slate-400 focus:border-blue-500 focus:ring-2 focus:ring-blue-500/20 outline-none resize-none transition"
+                  className="w-full rounded-xl border border-slate-200 pl-11 pr-4 py-3 text-slate-900 placeholder:text-slate-400 focus:border-blue-500 focus:ring-2 focus:ring-blue-500/20 outline-none resize-none transition"
                 />
               </div>
 
               <button
                 type="submit"
-                className="w-full bg-blue-600 hover:bg-blue-700 text-white font-semibold py-3.5 rounded-lg transition-all duration-300 hover:shadow-lg active:scale-95"
+                className="group w-full flex items-center justify-center gap-2 bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-500 hover:to-indigo-500 text-white font-semibold py-3.5 rounded-xl transition-all duration-300 hover:shadow-lg hover:shadow-blue-500/30 active:scale-[0.98]"
               >
                 Send via WhatsApp
+                <ArrowRight size={18} className="group-hover:translate-x-1 transition-transform" />
               </button>
+
+              <p className="text-center text-xs text-slate-400 font-light">
+                We typically respond within a few hours, during business days.
+              </p>
             </form>
           </>
         )}
@@ -240,75 +291,105 @@ function RecoveryProgramsModal({ onClose }) {
   const programs = [
     {
       title: "Outpatient Substance Abuse Treatment",
+      icon: Stethoscope,
       items: ["Individual counseling", "Trigger management", "Relapse prevention", "Recovery education"]
     },
     {
       title: "Peer Recovery Support",
+      icon: HeartHandshake,
       items: ["Recovery coaching", "Goal setting", "Life skills", "Community connection"]
     },
-   
   ];
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center bg-slate-950/80 backdrop-blur-sm px-4 py-8 overflow-y-auto">
-      <div className="relative w-full max-w-5xl rounded-2xl bg-white shadow-2xl max-h-[90vh] overflow-y-auto p-8 md:p-12">
-        <button
-          onClick={onClose}
-          className="absolute right-6 top-6 text-slate-400 hover:text-slate-700 transition text-2xl z-10"
-        >
-          ✕
-        </button>
+    <div className="fixed inset-0 z-50 flex items-center justify-center bg-slate-950/75 backdrop-blur-sm px-4 py-8 overflow-y-auto">
+      <div className="relative w-full max-w-5xl rounded-3xl bg-white shadow-2xl max-h-[90vh] overflow-y-auto">
+        {/* Header banner */}
+        <div className="relative bg-gradient-to-br from-red-500 to-amber-500 px-7 sm:px-12 pt-8 pb-10 sm:pb-12 rounded-t-3xl overflow-hidden">
+          <div className="absolute -top-12 -right-12 w-56 h-56 rounded-full bg-white/10 blur-3xl pointer-events-none" />
 
-        <div className="mb-12">
-          <h2 className="text-4xl md:text-xl font-semibold text-slate-900 mb-3">
-            Renewed Wellness & Recovery
+          <button
+            onClick={onClose}
+            aria-label="Close"
+            className="absolute right-5 top-5 w-9 h-9 flex items-center justify-center rounded-full bg-white/15 hover:bg-white/25 text-white transition z-10"
+          >
+            <X size={18} />
+          </button>
+
+          <div className="w-12 h-12 rounded-2xl bg-white/15 backdrop-blur flex items-center justify-center mb-4">
+            <Sparkles size={24} className="text-white" />
+          </div>
+          <h2 className="font-bold text-white mb-2 whitespace-nowrap text-[clamp(13px,4vw,30px)]">
+            Renewed Wellness &amp; Recovery
           </h2>
-          <p className="text-slate-600 text-lg font-light">
+          <p className="text-red-50 text-base sm:text-lg font-light max-w-lg">
             Rebuilding lives with hope, strength, and lasting recovery.
           </p>
         </div>
 
-        <div className="grid md:grid-cols-2 gap-6 mb-12">
-          {programs.map((program, i) => (
-            <div
-              key={i}
-              className="rounded-xl border border-slate-200 p-6 hover:border-slate-300 hover:bg-slate-50/50 transition-all duration-300 group"
+        <div className="p-7 sm:p-12 pt-8 sm:pt-10">
+          <div className="grid md:grid-cols-2 gap-5 sm:gap-6 mb-8">
+            {programs.map((program, i) => {
+              const Icon = program.icon;
+              return (
+                <div
+                  key={i}
+                  className="rounded-2xl border border-slate-200 p-6 hover:border-red-200 hover:bg-red-50/30 hover:shadow-md transition-all duration-300 group"
+                >
+                  <div className="w-11 h-11 rounded-xl bg-red-50 text-red-600 flex items-center justify-center mb-4 group-hover:bg-red-100 transition-colors">
+                    <Icon size={20} />
+                  </div>
+                  <h3 className="text-lg font-semibold text-slate-900 mb-4 group-hover:text-red-600 transition">
+                    {program.title}
+                  </h3>
+                  <ul className="space-y-2.5">
+                    {program.items.map((item, idx) => (
+                      <li key={idx} className="flex items-start gap-2.5 text-slate-600 font-light text-sm">
+                        <span className="w-1.5 h-1.5 mt-1.5 rounded-full bg-red-400 shrink-0" />
+                        <span>{item}</span>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              );
+            })}
+          </div>
+
+          {/* Trust strip */}
+          <div className="flex flex-wrap items-center justify-center gap-x-6 gap-y-2 py-4 mb-8 rounded-xl bg-slate-50 border border-slate-100">
+            <span className="flex items-center gap-1.5 text-xs font-medium text-slate-500">
+              <ShieldCheck size={14} className="text-red-500" /> Confidential
+            </span>
+            <span className="flex items-center gap-1.5 text-xs font-medium text-slate-500">
+              <UserCheck size={14} className="text-red-500" /> Licensed Providers
+            </span>
+            <span className="flex items-center gap-1.5 text-xs font-medium text-slate-500">
+              <HeartHandshake size={14} className="text-red-500" /> Personalized Plans
+            </span>
+          </div>
+
+          <div className="border-t border-slate-200 pt-8 text-center">
+            <p className="text-slate-700 font-light mb-6">
+              Ready to begin your recovery journey?
+            </p>
+            <button
+              onClick={openWhatsApp}
+              className="group inline-flex items-center gap-3 px-6 sm:px-8 py-3.5 bg-gradient-to-r from-amber-500 to-red-500 hover:from-amber-400 hover:to-red-400 text-white font-semibold rounded-xl transition-all duration-300 hover:shadow-lg hover:shadow-amber-500/30 active:scale-[0.98]"
             >
-              <h3 className="text-lg font-semibold text-slate-900 mb-5 group-hover:text-blue-600 transition">
-                {program.title}
-              </h3>
-              <ul className="space-y-3">
-                {program.items.map((item, idx) => (
-                  <li key={idx} className="flex items-start gap-3 text-slate-600 font-light">
-                    <span className="text-blue-500 mt-1.5 flex-shrink-0">•</span>
-                    <span>{item}</span>
-                  </li>
-                ))}
-              </ul>
+              <span className="whitespace-nowrap text-[clamp(12px,3.75vw,16px)]">Get Started on WhatsApp</span>
+              <ArrowRight size={18} className="group-hover:translate-x-1 transition-transform shrink-0" />
+            </button>
+
+            <div className="mt-8 pt-6 border-t border-slate-200 flex flex-wrap items-center justify-center gap-2 text-slate-500">
+              <Mail size={15} className="shrink-0" />
+              <span className="font-light">Or reach out via email:</span>
+              <a
+                href="mailto:osita.ogbunamiri@osywin.com?subject=Renewed%20Wellness%20Inquiry"
+                className="text-blue-600 hover:text-blue-700 font-semibold transition"
+              >
+                osita.ogbunamiri@osywin.com
+              </a>
             </div>
-          ))}
-        </div>
-
-        <div className="border-t border-slate-200 pt-10 text-center">
-          <p className="text-slate-700 font-light mb-6">
-            Ready to begin your recovery journey?
-          </p>
-          <button
-            onClick={openWhatsApp}
-            className="inline-flex items-center gap-3 px-8 py-3.5 bg-amber-500 hover:bg-amber-600 text-white font-semibold rounded-lg transition-all duration-300 hover:shadow-lg active:scale-95"
-          >
-            Get Started on WhatsApp
-            <span>→</span>
-          </button>
-
-          <div className="mt-10 pt-8 border-t border-slate-200">
-            <p className="text-slate-500 font-light mb-3">Or reach out via email:</p>
-            <a
-              href="mailto:osita.ogbunamiri@osywin.com?subject=Renewed%20Wellness%20Inquiry"
-              className="text-blue-600 hover:text-blue-700 font-semibold transition"
-            >
-              osita.ogbunamiri@osywin.com
-            </a>
           </div>
         </div>
       </div>

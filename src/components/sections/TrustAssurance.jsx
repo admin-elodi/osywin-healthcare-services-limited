@@ -53,7 +53,7 @@ const FAQS = [
       "Yes - we don't believe in one-size-fits-all. Your plan is built around your specific needs, history, and goals from the very first conversation.",
   },
   {
-    question: "What if I'm not sure I need support yet?",
+    question: "What if unsure I need support yet?",
     answer:
       "That's exactly what the first conversation is for. There's no pressure and no diagnosis required - we'll help you find the right next step together.",
   },
