@@ -319,7 +319,7 @@ function RecoveryProgramsModal({ onClose }) {
           <div className="w-12 h-12 rounded-2xl bg-white/15 backdrop-blur flex items-center justify-center mb-4">
             <Sparkles size={24} className="text-white" />
           </div>
-          <h2 className="font-bold text-white mb-2 whitespace-nowrap text-[clamp(13px,4vw,30px)]">
+          <h2 className="font-bold text-white mb-2 whitespace-nowrap text-[clamp(13px,calc(5.3226vw_-_4.6832px),30px)]">
             Renewed Wellness &amp; Recovery
           </h2>
           <p className="text-red-50 text-base sm:text-lg font-light max-w-lg">

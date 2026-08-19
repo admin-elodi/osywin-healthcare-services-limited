@@ -25,7 +25,7 @@ export default function Footer() {
   return (
     <footer
       id="contact"
-      className="relative bg-slate-950 text-slate-300 pt-20 pb-16 border-t border-slate-800"
+      className="relative bg-slate-900 text-slate-300 pt-20 pb-16 border-t border-slate-800"
     >
       {/* Subtle accent line along the very top edge */}
       <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-blue-500/50 to-transparent" />
