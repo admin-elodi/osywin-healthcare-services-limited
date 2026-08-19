@@ -1,7 +1,7 @@
 // src/components/Hero.jsx
 import { Link } from "react-router-dom";
 import { useState } from "react";
-import { UserCheck, Lock, BadgeCheck } from "lucide-react";
+import { UserCheck, Lock, BadgeCheck, Users } from "lucide-react";
 import healingVideo from "@/assets/videos/cool.webm";
 
 export default function Hero() {
@@ -9,16 +9,17 @@ export default function Hero() {
   const [showRecoveryModal, setShowRecoveryModal] = useState(false);
 
   const trustPoints = [
-    { icon: UserCheck, label: "Licensed & Experienced" },
+    { icon: UserCheck, label: "Licensed & Experienced", shortLabel: "Licensed & Trained" },
     { icon: Lock, label: "Confidential & Secure" },
     { icon: BadgeCheck, label: "Evidence-Based Care" },
+    { icon: Users, label: "Family-Centered Care" },
   ];
 
   return (
     <>
       <section
         id="home"
-        className="w-full flex items-center pt-28 pb-16 md:pt-24 md:pb-14 relative overflow-hidden bg-slate-950"
+        className="w-full flex items-center justify-center pt-28 pb-16 md:pt-24 md:pb-14 relative overflow-hidden bg-slate-950"
       >
         {/* Video Background */}
         <video
@@ -38,7 +39,7 @@ export default function Hero() {
         <div className="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/10 to-transparent" />
 
         {/* Content */}
-        <div className="relative z-10 max-w-5xl px-6 md:px-12">
+        <div className="relative z-10 max-w-5xl px-6 md:px-12 flex flex-col items-center text-center">
           <Link
             to="/about-us"
             className="inline-flex items-center gap-2 mb-5 sm:mb-6 px-4 py-2 sm:py-2.5 text-sm font-medium text-slate-100 border border-slate-400/50 rounded-full hover:border-blue-400 hover:bg-white/5 transition-all duration-300"
@@ -57,7 +58,7 @@ export default function Hero() {
             Compassionate, modern and professionally delivered psychiatric care, medication management, child &amp; adolescent support, crisis stabilization and telepsychiatry.
           </p>
 
-          <div className="mt-5 sm:mt-4 inline-flex flex-col gap-1.5 max-w-2xl border-l-2 border-red-400/60 pl-4">
+          <div className="mt-5 sm:mt-4 flex flex-col items-center gap-1.5 max-w-2xl">
             <p className="text-slate-300 text-sm sm:text-base font-light">
               Also home to{" "}
               <span className="font-semibold text-red-400">
@@ -69,17 +70,26 @@ export default function Hero() {
             </p>
           </div>
 
-          {/* Trust strip — compact 2-up grid on mobile so it still earns its keep without crowding the CTAs, full row from sm+ */}
-          <div className="grid grid-cols-2 gap-x-4 gap-y-3 sm:flex sm:flex-wrap sm:items-center sm:gap-x-8 sm:gap-y-2 mt-6 sm:mt-6">
-            {trustPoints.map(({ icon: Icon, label }) => (
-              <div key={label} className="flex items-center gap-2 text-slate-200">
+          {/* Trust strip — balanced 2x2 grid on mobile (a shorter variant keeps the longest label on one line), full row from sm+ */}
+          <div className="grid grid-cols-2 gap-x-4 gap-y-3 sm:flex sm:flex-wrap sm:items-center sm:justify-center sm:gap-x-8 sm:gap-y-2 mt-6 sm:mt-6">
+            {trustPoints.map(({ icon: Icon, label, shortLabel }) => (
+              <div key={label} className="flex items-center justify-center gap-2 text-slate-200">
                 <Icon size={17} className="text-blue-400 shrink-0" />
-                <span className="text-xs sm:text-sm font-medium leading-snug">{label}</span>
+                <span className="text-xs sm:text-sm font-medium leading-snug whitespace-nowrap">
+                  {shortLabel ? (
+                    <>
+                      <span className="sm:hidden">{shortLabel}</span>
+                      <span className="hidden sm:inline">{label}</span>
+                    </>
+                  ) : (
+                    label
+                  )}
+                </span>
               </div>
             ))}
           </div>
 
-          <div className="mt-7 sm:mt-8 flex flex-col sm:flex-row gap-3.5 sm:gap-4">
+          <div className="mt-7 sm:mt-8 flex flex-col items-center sm:flex-row sm:justify-center gap-3.5 sm:gap-4">
             <button
               onClick={() => setShowMentalHealthModal(true)}
               className="cursor-pointer group px-8 py-3 sm:py-3.5 bg-blue-600 text-white font-semibold rounded-lg hover:bg-blue-500 transition-all duration-300 shadow-lg shadow-blue-950/50 hover:shadow-xl hover:shadow-blue-900/40 hover:scale-[1.03]"
