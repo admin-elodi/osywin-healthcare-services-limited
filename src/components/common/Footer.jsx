@@ -177,8 +177,8 @@ export default function Footer() {
           </Link>
         </div>
 
-        <div className="text-center mt-12 text-[16px] text-slate-500 tracking-wide">
-          <p className="font-medium">
+        <div className="text-center mt-12 text-slate-500 tracking-wide">
+          <p className="font-medium whitespace-nowrap text-[clamp(11px,3.5vw,16px)]">
             © {new Date().getFullYear()} OSYWIN Healthcare Services Limited
           </p>
           <p className="text-[10px] mt-3 font-medium text-slate-600 hover:text-slate-400 transition-colors duration-200">

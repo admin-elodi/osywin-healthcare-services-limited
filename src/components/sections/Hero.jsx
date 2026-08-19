@@ -1,5 +1,4 @@
 // src/components/Hero.jsx
-import { Link } from "react-router-dom";
 import { useState } from "react";
 import { UserCheck, Lock, BadgeCheck, Users } from "lucide-react";
 import healingVideo from "@/assets/videos/cool.webm";
@@ -40,26 +39,18 @@ export default function Hero() {
 
         {/* Content */}
         <div className="relative z-10 max-w-5xl px-6 md:px-12 flex flex-col items-center text-center">
-          <Link
-            to="/about-us"
-            className="inline-flex items-center gap-2 mb-5 sm:mb-6 px-4 py-2 sm:py-2.5 text-sm font-medium text-slate-100 border border-slate-400/50 rounded-full hover:border-blue-400 hover:bg-white/5 transition-all duration-300"
-          >
-            <span className="w-1.5 h-1.5 bg-blue-400 rounded-full" />
-            About OSYWIN
-          </Link>
-
           <h1 className="text-white text-3xl sm:text-4xl md:text-4xl font-bold leading-[1.2] sm:leading-[1.1] tracking-tight mb-4 sm:mb-4 max-w-3xl">
             WINN Psychiatry &amp; Mental Health Services
           </h1>
 
-          <div className="w-24 h-1.5 rounded-full bg-gradient-to-r from-blue-500 to-blue-500/0 mb-5 sm:mb-4" />
-
-          <p className="text-slate-100 text-base sm:text-lg leading-relaxed max-w-2xl font-light text-justify">
-            Compassionate, modern and professionally delivered psychiatric care, medication management, child &amp; adolescent support, crisis stabilization and telepsychiatry.
+          <p className="text-slate-100 font-light whitespace-nowrap text-[clamp(8.5px,2.6vw,16px)] mb-5 sm:mb-4">
+            Compassionate care, medication management &amp; telepsychiatry.
           </p>
 
+          <div className="w-24 h-1.5 rounded-full bg-gradient-to-r from-blue-500 to-blue-500/0" />
+
           <div className="mt-5 sm:mt-4 flex flex-col items-center gap-1.5 max-w-2xl">
-            <p className="text-slate-300 text-sm sm:text-base font-light">
+            <p className="text-slate-300 font-light whitespace-nowrap text-[clamp(9.5px,3.4vw,16px)]">
               Also home to{" "}
               <span className="font-semibold text-red-400">
                 Renewed Wellness &amp; Recovery Services
