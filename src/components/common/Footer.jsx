@@ -34,7 +34,8 @@ export default function Footer() {
 
         {/* Brand */}
         <div className="space-y-8 min-w-0">
-          <div className="flex items-center gap-1.5 sm:gap-2 lg:gap-2.5">
+          {/* Fixed-height heading zone so this lines up with the other columns' h3 headings, and the logo/name stay paired as a unit */}
+          <div className="h-9 sm:h-9 lg:h-8 xl:h-10 flex items-center gap-1.5 sm:gap-2 lg:gap-2.5">
             <img
               src={logo}
               alt="OSYWIN Logo"
@@ -75,9 +76,11 @@ export default function Footer() {
 
         {/* WINN */}
         <div>
-          <h3 className="text-sm font-semibold text-blue-400 uppercase tracking-wider mb-8">
-            Winn Psychiatry
-          </h3>
+          <div className="h-9 sm:h-9 lg:h-8 xl:h-10 flex items-center mb-8">
+            <h3 className="text-sm font-semibold text-blue-400 uppercase tracking-wider">
+              Winn Psychiatry
+            </h3>
+          </div>
           <ul className="space-y-3 text-sm text-slate-300">
             <li className="flex items-start gap-2 hover:text-white transition-colors duration-200 cursor-default">
               <span className="w-1 h-1 mt-2 rounded-full bg-blue-400/70 shrink-0" />
@@ -100,9 +103,11 @@ export default function Footer() {
 
         {/* Renewed */}
         <div>
-          <h3 className="text-sm font-semibold text-red-400 uppercase tracking-wider mb-8">
-            Renewed Wellness
-          </h3>
+          <div className="h-9 sm:h-9 lg:h-8 xl:h-10 flex items-center mb-8">
+            <h3 className="text-sm font-semibold text-red-400 uppercase tracking-wider">
+              Renewed Wellness
+            </h3>
+          </div>
           <ul className="space-y-3 text-sm text-slate-300">
             <li className="flex items-start gap-2 hover:text-white transition-colors duration-200 cursor-default">
               <span className="w-1 h-1 mt-2 rounded-full bg-red-400/70 shrink-0" />
@@ -117,9 +122,11 @@ export default function Footer() {
 
         {/* Contact */}
         <div>
-          <h3 className="text-sm font-semibold text-white uppercase tracking-wider mb-8">
-            Contact
-          </h3>
+          <div className="h-9 sm:h-9 lg:h-8 xl:h-10 flex items-center mb-8">
+            <h3 className="text-sm font-semibold text-white uppercase tracking-wider">
+              Contact
+            </h3>
+          </div>
 
           <div className="space-y-6 text-sm text-slate-300">
             <div className="flex items-start gap-3 hover:text-white transition-colors duration-200 group">

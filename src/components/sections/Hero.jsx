@@ -18,7 +18,7 @@ export default function Hero() {
     <>
       <section
         id="home"
-        className="w-full flex items-center pt-28 pb-10 md:pt-24 md:pb-14 relative overflow-hidden bg-slate-950"
+        className="w-full flex items-center pt-28 pb-16 md:pt-24 md:pb-14 relative overflow-hidden bg-slate-950"
       >
         {/* Video Background */}
         <video
@@ -33,7 +33,7 @@ export default function Hero() {
           Your browser does not support the video tag.
         </video>
 
-        {/* Stronger scrim — text authority no longer depends on video brightness */}
+        {/* Stronger scrim - text authority no longer depends on video brightness */}
         <div className="absolute inset-0 bg-gradient-to-br from-slate-950/70 via-slate-950/70 to-blue-950/80" />
         <div className="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/10 to-transparent" />
 
@@ -41,23 +41,23 @@ export default function Hero() {
         <div className="relative z-10 max-w-5xl px-6 md:px-12">
           <Link
             to="/about-us"
-            className="inline-flex items-center gap-2 mb-3 sm:mb-6 px-4 py-2 sm:py-2.5 text-sm font-medium text-slate-100 border border-slate-400/50 rounded-full hover:border-blue-400 hover:bg-white/5 transition-all duration-300"
+            className="inline-flex items-center gap-2 mb-5 sm:mb-6 px-4 py-2 sm:py-2.5 text-sm font-medium text-slate-100 border border-slate-400/50 rounded-full hover:border-blue-400 hover:bg-white/5 transition-all duration-300"
           >
             <span className="w-1.5 h-1.5 bg-blue-400 rounded-full" />
             About OSYWIN
           </Link>
 
-          <h1 className="text-white text-3xl sm:text-4xl md:text-4xl font-bold leading-[1.1] tracking-tight mb-3 sm:mb-4 max-w-3xl">
+          <h1 className="text-white text-3xl sm:text-4xl md:text-4xl font-bold leading-[1.2] sm:leading-[1.1] tracking-tight mb-4 sm:mb-4 max-w-3xl">
             WINN Psychiatry &amp; Mental Health Services
           </h1>
 
-          <div className="w-24 h-1.5 rounded-full bg-gradient-to-r from-blue-500 to-blue-500/0 mb-3 sm:mb-4" />
+          <div className="w-24 h-1.5 rounded-full bg-gradient-to-r from-blue-500 to-blue-500/0 mb-5 sm:mb-4" />
 
-          <p className="text-slate-100 text-base sm:text-lg leading-relaxed max-w-2xl font-light">
+          <p className="text-slate-100 text-base sm:text-lg leading-relaxed max-w-2xl font-light text-justify">
             Compassionate, modern and professionally delivered psychiatric care, medication management, child &amp; adolescent support, crisis stabilization and telepsychiatry.
           </p>
 
-          <div className="mt-3 sm:mt-4 inline-flex flex-col gap-1 max-w-2xl border-l-2 border-red-400/60 pl-4">
+          <div className="mt-5 sm:mt-4 inline-flex flex-col gap-1.5 max-w-2xl border-l-2 border-red-400/60 pl-4">
             <p className="text-slate-300 text-sm sm:text-base font-light">
               Also home to{" "}
               <span className="font-semibold text-red-400">
@@ -69,17 +69,17 @@ export default function Hero() {
             </p>
           </div>
 
-          {/* Trust strip — hidden on the smallest screens to keep CTAs above the fold */}
-          <div className="hidden sm:flex mt-4 sm:mt-6 flex-wrap items-center gap-x-8 gap-y-2">
+          {/* Trust strip — compact 2-up grid on mobile so it still earns its keep without crowding the CTAs, full row from sm+ */}
+          <div className="grid grid-cols-2 gap-x-4 gap-y-3 sm:flex sm:flex-wrap sm:items-center sm:gap-x-8 sm:gap-y-2 mt-6 sm:mt-6">
             {trustPoints.map(({ icon: Icon, label }) => (
               <div key={label} className="flex items-center gap-2 text-slate-200">
-                <Icon size={18} className="text-blue-400 shrink-0" />
-                <span className="text-sm font-medium">{label}</span>
+                <Icon size={17} className="text-blue-400 shrink-0" />
+                <span className="text-xs sm:text-sm font-medium leading-snug">{label}</span>
               </div>
             ))}
           </div>
 
-          <div className="mt-4 sm:mt-6 flex flex-col sm:flex-row gap-3 sm:gap-4">
+          <div className="mt-7 sm:mt-8 flex flex-col sm:flex-row gap-3.5 sm:gap-4">
             <button
               onClick={() => setShowMentalHealthModal(true)}
               className="cursor-pointer group px-8 py-3 sm:py-3.5 bg-blue-600 text-white font-semibold rounded-lg hover:bg-blue-500 transition-all duration-300 shadow-lg shadow-blue-950/50 hover:shadow-xl hover:shadow-blue-900/40 hover:scale-[1.03]"
@@ -125,8 +125,8 @@ function MentalHealthBookingModal({ onClose }) {
     const whatsappNumber = "12156811972";
     const text = encodeURIComponent(
       `*Mental Health Appointment*\n\n` +
-      `Name: ${name}\nPhone: ${phone}\nEmail: ${email || "—"}` +
-      `\nMessage: ${message || "—"}`
+      `Name: ${name}\nPhone: ${phone}\nEmail: ${email || "-"}` +
+      `\nMessage: ${message || "-"}`
     );
     const url = `https://wa.me/${whatsappNumber}?text=${text}`;
 

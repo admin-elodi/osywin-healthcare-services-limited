@@ -1,4 +1,4 @@
-CARD PHOTOS — DOWNLOAD & SETUP GUIDE (FREE PHOTOS ONLY, VERIFIED)
+CARD PHOTOS - DOWNLOAD & SETUP GUIDE (FREE PHOTOS ONLY, VERIFIED)
 ======================================================================
 
 Every link below was opened and individually checked for a "Download
@@ -13,11 +13,11 @@ HOW TO DOWNLOAD FROM UNSPLASH:
   2. Click the black "Download free" button (top right of the photo).
   3. Rename the downloaded file to the exact "Save as" name listed.
   4. Move it into src/assets/images/cards/.
-  All photos are on the standard Unsplash License — free for
+  All photos are on the standard Unsplash License - free for
   commercial use, no attribution legally required.
 
 ---------------------------------------------------------------------
-SECTION 1 — "What to Expect When You Reach Out" (CarePathway.jsx)
+SECTION 1 - "What to Expect When You Reach Out" (CarePathway.jsx)
 ---------------------------------------------------------------------
 
 1. Begin the Conversation
@@ -37,7 +37,7 @@ SECTION 1 — "What to Expect When You Reach Out" (CarePathway.jsx)
    Link:     https://unsplash.com/photos/a-sun-dappled-path-leads-through-a-lush-green-forest-Y6ZAszW14Iw
 
 ---------------------------------------------------------------------
-SECTION 2 — "Care You Can Trust" (TrustAssurance.jsx)
+SECTION 2 - "Care You Can Trust" (TrustAssurance.jsx)
 ---------------------------------------------------------------------
 
 5. Licensed & Experienced Professionals
@@ -61,7 +61,7 @@ NOTES
 ---------------------------------------------------------------------
 - CarePathway.jsx and TrustAssurance.jsx (included in this zip) already
   import each photo by the exact filenames above from
-  src/assets/images/cards/ — once all 8 files are in that folder with
+  src/assets/images/cards/ - once all 8 files are in that folder with
   matching names, no code changes are needed.
 - If any single photo doesn't feel right once you see it in context,
   it's a one-line swap: replace that file (keep the same filename) and

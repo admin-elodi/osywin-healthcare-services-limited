@@ -1,6 +1,6 @@
 # OSYWIN Health
 
-Marketing/informational website for **OSYWIN Healthcare Services Limited** — a unified,
+Marketing/informational website for **OSYWIN Healthcare Services Limited** - a unified,
 family-centered healthcare system providing psychiatric care, mental health services,
 addiction recovery, and whole-person wellness (including the WINN Psychiatry & Mental
 Health Services program).
@@ -9,12 +9,12 @@ Built with React 19, Vite, and Tailwind CSS v4.
 
 ## Tech Stack
 
-- **React 19** + **React Router v7** — SPA routing
-- **Vite 6** — dev server / build tooling
-- **Tailwind CSS v4** (`@tailwindcss/vite`) — styling
-- **Framer Motion** — animations
-- **lucide-react** / **react-icons** — icon sets
-- **sharp**, **fluent-ffmpeg**, **fs-extra**, **glob** — used by the local image/video
+- **React 19** + **React Router v7** - SPA routing
+- **Vite 6** - dev server / build tooling
+- **Tailwind CSS v4** (`@tailwindcss/vite`) - styling
+- **Framer Motion** - animations
+- **lucide-react** / **react-icons** - icon sets
+- **sharp**, **fluent-ffmpeg**, **fs-extra**, **glob** - used by the local image/video
   optimization script (not shipped to the browser)
 
 ## Project Structure
@@ -74,5 +74,5 @@ It skips files that are already converted and prints per-file progress.
 ## Deployment
 
 This is a static Vite build (`npm run build` outputs to `dist/`), deployable to any static
-host or cPanel-based hosting. Hosting/domain credentials are **not** stored in this repo —
+host or cPanel-based hosting. Hosting/domain credentials are **not** stored in this repo -
 keep those in a password manager or your host's dashboard, not in version control.

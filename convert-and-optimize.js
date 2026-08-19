@@ -16,7 +16,7 @@ const videoRoot = "src/assets/videos";
 const codeRoot = "src";
 const backupDir = "backup_before_conversion";
 
-// FFmpeg optimization options — UPDATED to VP9 + CRF (recommended 2026 web settings)
+// FFmpeg optimization options - UPDATED to VP9 + CRF (recommended 2026 web settings)
 const ffmpegVideoOptions = [
   "-c:v", "libvpx-vp9",
   "-b:v", "0",           // must be 0 when using CRF
@@ -26,7 +26,7 @@ const ffmpegVideoOptions = [
   "-tile-columns", "2",  // helps encoding performance
   "-frame-parallel", "1",
   "-c:a", "libopus",
-  "-b:a", "80k",         // small bump from 64k — better audio without much size increase
+  "-b:a", "80k",         // small bump from 64k - better audio without much size increase
 ];
 
 // --------------------- Helpers ---------------------
