@@ -43,7 +43,7 @@ export default function FloatingActions() {
   return (
     <div
       ref={wrapRef}
-      className="fixed bottom-5 right-5 sm:bottom-6 sm:right-6 z-40 flex flex-col items-end gap-3"
+      className="fixed bottom-5 right-5 sm:bottom-6 sm:right-6 z-40 flex flex-col items-end gap-3 pointer-events-none"
     >
       {/* Expand menu */}
       <div
@@ -102,7 +102,7 @@ export default function FloatingActions() {
         onClick={() => setWaOpen((prev) => !prev)}
         aria-label={waOpen ? "Close WhatsApp menu" : "Chat on WhatsApp"}
         aria-expanded={waOpen}
-        className="w-14 h-14 rounded-full bg-emerald-500 hover:bg-emerald-400 text-white shadow-xl shadow-emerald-900/20 flex items-center justify-center transition-all duration-300 hover:scale-105 active:scale-95"
+        className="pointer-events-auto w-14 h-14 rounded-full bg-emerald-500 hover:bg-emerald-400 text-white shadow-xl shadow-emerald-900/20 flex items-center justify-center transition-all duration-300 hover:scale-105 active:scale-95"
       >
         {waOpen ? <X size={22} /> : <WhatsAppIcon size={26} />}
       </button>
