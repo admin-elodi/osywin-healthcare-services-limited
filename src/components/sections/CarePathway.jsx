@@ -7,6 +7,7 @@ import {
   TrendingUp,
   ChevronDown,
   ArrowRight,
+  Check,
 } from "lucide-react";
 
 // Photos live in src/assets/images/cards/ - see README-CARD-IMAGES.txt for
@@ -57,8 +58,10 @@ export default function CarePathway() {
   const steps = [
     {
       title: "Begin the Conversation",
-      description:
-        "Your journey starts with a confidential conversation - we listen carefully, without judgment or pressure.",
+      descriptionPoints: [
+        "Always confidential",
+        "No judgment, ever",
+      ],
       detail:
         "Reach out by phone or through our contact form whenever you're ready. There's no script to follow and no wrong way to start - we simply listen.",
       accent: "blue",
@@ -70,8 +73,10 @@ export default function CarePathway() {
     },
     {
       title: "Clinical Assessment",
-      description:
-        "A licensed professional conducts a thoughtful assessment of your needs to determine the most appropriate care path.",
+      descriptionPoints: [
+        "Licensed clinicians",
+        "Finds your care path",
+      ],
       detail:
         "This typically takes place over one or two sessions and helps us understand your history, goals, and current needs before recommending next steps.",
       accent: "indigo",
@@ -83,8 +88,10 @@ export default function CarePathway() {
     },
     {
       title: "Personalized Care & Support",
-      description:
-        "Together, we develop an individualized treatment plan focused on stability, healing, and long-term wellbeing.",
+      descriptionPoints: [
+        "A plan built for you",
+        "For your wellbeing",
+      ],
       detail:
         "Your plan may include individual therapy, group support, or medication management - whichever combination fits your goals and pace.",
       accent: "red",
@@ -96,8 +103,10 @@ export default function CarePathway() {
     },
     {
       title: "Ongoing Guidance",
-      description:
-        "Care continues with consistent follow-up, ongoing support, and encouragement as you progress toward sustained wellness.",
+      descriptionPoints: [
+        "Regular follow-ups",
+        "Support as you heal",
+      ],
       detail:
         "We check in regularly, adjust your plan as your needs evolve, and celebrate progress with you every step of the way.",
       accent: "emerald",
@@ -126,7 +135,7 @@ export default function CarePathway() {
         </div>
 
         {/* Steps */}
-        <div className="grid gap-10 md:grid-cols-2 lg:grid-cols-4">
+        <div className="grid gap-10 md:grid-cols-2 xl:grid-cols-4">
           {steps.map((step, index) => (
             <div
               key={index}
@@ -141,9 +150,14 @@ export default function CarePathway() {
                   {step.title}
                 </h3>
 
-                <p className="text-gray-700 leading-relaxed text-justify">
-                  {step.description}
-                </p>
+                <ul className="space-y-2">
+                  {step.descriptionPoints.map((point, idx) => (
+                    <li key={idx} className="flex items-center gap-2 text-gray-700 leading-relaxed">
+                      <Check size={15} strokeWidth={2.75} className="text-emerald-600 shrink-0" />
+                      <span className="whitespace-nowrap">{point}</span>
+                    </li>
+                  ))}
+                </ul>
 
                 {/* Expandable detail */}
                 <div className="mt-auto pt-4">

@@ -5,6 +5,7 @@ import {
   FileCheck,
   Heart,
   ChevronDown,
+  Check,
 } from "lucide-react";
 
 // Section background - a cool, calm, light sky photo. See
@@ -64,8 +65,10 @@ export default function TrustAssurance() {
   const assurances = [
     {
       title: "Licensed Professionals",
-      description:
-        "Delivered by qualified, experienced mental health and recovery professionals who are committed to ethical, evidence-based care.",
+      descriptionPoints: [
+        "Skilled professionals",
+        "Ethical & proven",
+      ],
       art: {
         image: licensedProfessionalsImg,
         alt: "Confident, licensed medical professional",
@@ -74,8 +77,10 @@ export default function TrustAssurance() {
     },
     {
       title: "Confidential Care",
-      description:
-        "Your personal information and conversations are always handled with strict confidentiality and full respect for your privacy.",
+      descriptionPoints: [
+        "Strictly confidential",
+        "Privacy protected",
+      ],
       art: {
         image: confidentialSecureImg,
         alt: "A cozy, private reading nook symbolizing a quiet, confidential space",
@@ -84,8 +89,11 @@ export default function TrustAssurance() {
     },
     {
       title: "Proven Treatment",
-      description:
-        "Our approach is grounded in clinically proven methods that support long-term mental wellness and lasting recovery.",
+      descriptionPoints: [
+        "Clinically proven",
+        "Lasting recovery",
+        "Long-term wellness",
+      ],
       art: {
         image: evidenceBasedImg,
         alt: "A stack of books symbolizing research-backed, clinically proven methods",
@@ -94,8 +102,10 @@ export default function TrustAssurance() {
     },
     {
       title: "Compassionate Care",
-      description:
-        "We treat every individual with genuine dignity, empathy, and understanding - recognizing the whole person, not just symptoms.",
+      descriptionPoints: [
+        "Genuine empathy",
+        "Whole-person care",
+      ],
       art: {
         image: compassionateCareImg,
         alt: "Hands held together in a gesture of compassion and support",
@@ -133,7 +143,7 @@ export default function TrustAssurance() {
         </div>
 
         {/* Assurance Grid */}
-        <div className="grid gap-10 md:grid-cols-2 lg:grid-cols-4">
+        <div className="grid gap-10 md:grid-cols-2 xl:grid-cols-4">
           {assurances.map((item, index) => (
             <div
               key={index}
@@ -148,9 +158,14 @@ export default function TrustAssurance() {
                   {item.title}
                 </h3>
 
-                <p className="text-slate-600 leading-relaxed text-sm text-justify">
-                  {item.description}
-                </p>
+                <ul className="space-y-2">
+                  {item.descriptionPoints.map((point, idx) => (
+                    <li key={idx} className="flex items-center gap-2 text-slate-600 leading-relaxed text-sm">
+                      <Check size={14} strokeWidth={2.75} className="text-emerald-600 shrink-0" />
+                      <span className="whitespace-nowrap">{point}</span>
+                    </li>
+                  ))}
+                </ul>
               </div>
             </div>
           ))}
