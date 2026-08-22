@@ -1,9 +1,9 @@
 // src/components/common/FloatingActions.jsx
-// Persistent, site-wide floating controls: a WhatsApp quick-contact FAB
-// (mirrors the two service lines already used in Hero's modals) and a
-// "back to top" button that fades in once the user has scrolled down.
+// Persistent, site-wide floating WhatsApp quick-contact FAB - mirrors the
+// two service lines already used in Hero's modals. (Back-to-top stays
+// owned by Footer's own button - no duplicate floating one here.)
 import React, { useState, useEffect, useRef } from "react";
-import { ArrowUp, X } from "lucide-react";
+import { X } from "lucide-react";
 
 function WhatsAppIcon({ size = 24, className = "" }) {
   return (
@@ -22,15 +22,7 @@ function WhatsAppIcon({ size = 24, className = "" }) {
 
 export default function FloatingActions() {
   const [waOpen, setWaOpen] = useState(false);
-  const [showTop, setShowTop] = useState(false);
   const wrapRef = useRef(null);
-
-  useEffect(() => {
-    const onScroll = () => setShowTop(window.scrollY > 400);
-    onScroll();
-    window.addEventListener("scroll", onScroll, { passive: true });
-    return () => window.removeEventListener("scroll", onScroll);
-  }, []);
 
   useEffect(() => {
     if (!waOpen) return;
@@ -42,11 +34,6 @@ export default function FloatingActions() {
     document.addEventListener("mousedown", onClickOutside);
     return () => document.removeEventListener("mousedown", onClickOutside);
   }, [waOpen]);
-
-  const scrollToTop = () => {
-    const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-    window.scrollTo({ top: 0, behavior: reduceMotion ? "auto" : "smooth" });
-  };
 
   const openWhatsApp = (number, text) => {
     window.open(`https://wa.me/${number}?text=${encodeURIComponent(text)}`, "_blank");
@@ -108,20 +95,6 @@ export default function FloatingActions() {
           </span>
         </button>
       </div>
-
-      {/* Back to top */}
-      <button
-        type="button"
-        onClick={scrollToTop}
-        aria-label="Back to top"
-        className={`w-11 h-11 rounded-full bg-slate-900/90 hover:bg-slate-800 text-white shadow-lg flex items-center justify-center transition-all duration-300 ease-out ${
-          showTop
-            ? "opacity-100 translate-y-0 pointer-events-auto"
-            : "opacity-0 translate-y-3 pointer-events-none"
-        }`}
-      >
-        <ArrowUp size={18} />
-      </button>
 
       {/* WhatsApp FAB */}
       <button
