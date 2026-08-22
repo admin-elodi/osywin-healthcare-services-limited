@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import {
   Award,
   ShieldCheck,
@@ -18,6 +18,13 @@ import licensedProfessionalsImg from "@/assets/images/cards/licensed-professiona
 import confidentialSecureImg from "@/assets/images/cards/confidential-secure.jpg";
 import evidenceBasedImg from "@/assets/images/cards/evidence-based.jpg";
 import compassionateCareImg from "@/assets/images/cards/compassionate-care.jpg";
+
+// Skip the JS-driven stagger delay for users who've asked their OS to
+// reduce motion - the CSS override already collapses transition duration
+// to near-zero, but transition-delay isn't a duration and needs its own guard.
+const prefersReducedMotion = () =>
+  typeof window !== "undefined" &&
+  window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
 function CardArt({ image, alt, AccentIcon }) {
   return (
@@ -62,6 +69,27 @@ const FAQS = [
 
 export default function TrustAssurance() {
   const [openFaq, setOpenFaq] = useState(null);
+
+  // Entrance animation - triggers once the assurance grid scrolls into view
+  const gridRef = useRef(null);
+  const [inView, setInView] = useState(false);
+
+  useEffect(() => {
+    const el = gridRef.current;
+    if (!el) return;
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setInView(true);
+          observer.disconnect();
+        }
+      },
+      { threshold: 0.15 }
+    );
+    observer.observe(el);
+    return () => observer.disconnect();
+  }, []);
+
   const assurances = [
     {
       title: "Licensed Professionals",
@@ -143,11 +171,16 @@ export default function TrustAssurance() {
         </div>
 
         {/* Assurance Grid */}
-        <div className="grid gap-10 md:grid-cols-2 xl:grid-cols-4">
+        <div ref={gridRef} className="grid gap-10 md:grid-cols-2 xl:grid-cols-4">
           {assurances.map((item, index) => (
             <div
               key={index}
-              className="bg-white/80 backdrop-blur-md border border-white/60 rounded-2xl overflow-hidden shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all duration-300 h-full flex flex-col"
+              style={{
+                transitionDelay: inView && !prefersReducedMotion() ? `${index * 150}ms` : "0ms",
+              }}
+              className={`bg-white/80 backdrop-blur-md border border-white/60 rounded-2xl overflow-hidden shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all duration-700 ease-out h-full flex flex-col ${
+                inView ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6"
+              }`}
             >
               {/* Illustration - bleeds to the card's top and side edges */}
               <CardArt {...item.art} />

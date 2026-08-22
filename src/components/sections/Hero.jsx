@@ -18,6 +18,7 @@ import {
   Stethoscope,
   CheckCircle2,
   ArrowRight,
+  ChevronDown,
 } from "lucide-react";
 import healingVideo from "@/assets/videos/cool.webm";
 
@@ -32,11 +33,22 @@ export default function Hero() {
     { icon: Users, label: "Family-Centered Care" },
   ];
 
+  const prefersReducedMotion =
+    typeof window !== "undefined" &&
+    window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+  const scrollToNext = () => {
+    window.scrollBy({
+      top: window.innerHeight - 96,
+      behavior: prefersReducedMotion ? "auto" : "smooth",
+    });
+  };
+
   return (
     <>
       <section
         id="home"
-        className="w-full flex items-center justify-center pt-28 pb-16 md:pt-24 md:pb-14 relative overflow-hidden bg-slate-950"
+        className="w-full flex items-center justify-center pt-32 pb-20 md:pt-36 md:pb-24 relative overflow-hidden bg-slate-950"
       >
         {/* Video Background */}
         <video
@@ -57,7 +69,7 @@ export default function Hero() {
 
         {/* Content */}
         <div className="relative z-10 max-w-5xl px-6 md:px-12 flex flex-col items-center text-center">
-          <h1 className="text-white text-3xl sm:text-4xl md:text-4xl font-bold leading-[1.2] sm:leading-[1.1] tracking-tight mb-4 sm:mb-4 max-w-3xl">
+          <h1 className="text-white text-2xl sm:text-3xl md:text-3xl font-bold leading-[1.25] sm:leading-[1.15] tracking-tight mb-5 sm:mb-5 max-w-3xl">
             WINN Psychiatry &amp; Mental Health Services
           </h1>
 
@@ -65,7 +77,7 @@ export default function Hero() {
             Compassionate, modern and professionally delivered psychiatric care, medication management, child &amp; adolescent support, crisis stabilization and telepsychiatry.
           </p>
 
-          <div className="w-24 h-1.5 rounded-full bg-gradient-to-r from-blue-500 to-blue-500/0" />
+          <div className="w-24 h-1.5 rounded-full bg-gradient-to-r from-blue-500 to-blue-500/0 animate-[streak-pulse_2.4s_ease-in-out_infinite]" />
 
           <div className="mt-5 sm:mt-4 flex flex-col items-center gap-1.5 max-w-2xl">
             <p className="text-slate-300 font-light whitespace-nowrap text-[clamp(9.5px,3.4vw,16px)]">
@@ -80,9 +92,13 @@ export default function Hero() {
           </div>
 
           {/* Trust strip — balanced 2x2 grid on mobile (a shorter variant keeps the longest label on one line), full row from sm+ */}
-          <div className="grid grid-cols-2 gap-x-4 gap-y-3 sm:flex sm:flex-wrap sm:items-center sm:justify-center sm:gap-x-8 sm:gap-y-2 mt-6 sm:mt-6">
-            {trustPoints.map(({ icon: Icon, label, shortLabel }) => (
-              <div key={label} className="flex items-center justify-center gap-2 text-slate-200">
+          <div className="grid grid-cols-2 gap-x-4 gap-y-3 sm:flex sm:flex-wrap sm:items-center sm:justify-center sm:gap-x-8 sm:gap-y-2 mt-7 sm:mt-7">
+            {trustPoints.map(({ icon: Icon, label, shortLabel }, index) => (
+              <div
+                key={label}
+                className="flex items-center justify-center gap-2 text-slate-200 opacity-0 animate-[fade-in-up_0.6s_ease-out_forwards]"
+                style={{ animationDelay: prefersReducedMotion ? "0ms" : `${300 + index * 120}ms` }}
+              >
                 <Icon size={17} className="text-blue-400 shrink-0" />
                 <span className="text-xs sm:text-sm font-medium leading-snug whitespace-nowrap">
                   {shortLabel ? (
@@ -98,7 +114,7 @@ export default function Hero() {
             ))}
           </div>
 
-          <div className="mt-7 sm:mt-8 flex flex-col items-center sm:flex-row sm:justify-center gap-3.5 sm:gap-4">
+          <div className="mt-8 sm:mt-9 flex flex-col items-center sm:flex-row sm:justify-center gap-3.5 sm:gap-4">
             <button
               onClick={() => setShowMentalHealthModal(true)}
               className="cursor-pointer group px-8 py-3 sm:py-3.5 bg-blue-600 text-white font-semibold rounded-lg hover:bg-blue-500 transition-all duration-300 shadow-lg shadow-blue-950/50 hover:shadow-xl hover:shadow-blue-900/40 hover:scale-[1.03]"
@@ -116,6 +132,16 @@ export default function Hero() {
             </button>
           </div>
         </div>
+
+        {/* Scroll cue */}
+        <button
+          type="button"
+          onClick={scrollToNext}
+          aria-label="Scroll to learn more"
+          className="cursor-pointer absolute bottom-5 left-1/2 -translate-x-1/2 z-10 w-9 h-9 rounded-full border border-white/40 text-white/80 flex items-center justify-center hover:text-white hover:border-white/70 hover:bg-white/10 transition-colors duration-300 animate-bounce"
+        >
+          <ChevronDown size={18} />
+        </button>
       </section>
 
       {showMentalHealthModal && (

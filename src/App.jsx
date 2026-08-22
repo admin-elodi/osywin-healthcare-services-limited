@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Routes, Route, useLocation } from 'react-route
 
 import Header from '@/components/common/Header';
 import Footer from '@/components/common/Footer';
+import FloatingActions from '@/components/common/FloatingActions';
 import Home from '@/pages/Home';
 import Programs from '@/pages/Programs';
 import Winn from '@/pages/Winn';
@@ -61,6 +62,7 @@ function App() {
       </Routes>
 
       <Footer />
+      <FloatingActions />
     </Router>
   );
 }

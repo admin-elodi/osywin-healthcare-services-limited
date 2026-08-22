@@ -1,5 +1,5 @@
 // src/components/Header.jsx
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useLayoutEffect, useRef } from "react";
 import { Link, useLocation } from "react-router-dom";
 import logo from "@/assets/images/wellness-logo.webp";
 import { Menu, X } from "lucide-react";
@@ -22,7 +22,29 @@ export default function Header() {
     { path: "/winn", label: "WINN Psychiatry" },
     { path: "/renewed", label: "Renewed Wellness" },
     { path: "/about-us", label: "About OSYWIN" },
+    { path: "/contact", label: "Contact" },
   ];
+
+  // Sliding indicator that tracks the active desktop nav link
+  const navRef = useRef(null);
+  const linkRefs = useRef([]);
+  const [indicator, setIndicator] = useState({ left: 0, width: 0, ready: false });
+
+  useLayoutEffect(() => {
+    const measure = () => {
+      const activeIndex = navItems.findIndex((item) => item.path === location.pathname);
+      const activeEl = linkRefs.current[activeIndex];
+      if (activeEl) {
+        setIndicator({ left: activeEl.offsetLeft, width: activeEl.offsetWidth, ready: true });
+      } else {
+        setIndicator((prev) => ({ ...prev, ready: false }));
+      }
+    };
+    measure();
+    window.addEventListener("resize", measure);
+    return () => window.removeEventListener("resize", measure);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [location.pathname]);
 
   const toggleMenu = () => setIsOpen((prev) => !prev);
   const closeMenu = () => setIsOpen(false);
@@ -54,12 +76,21 @@ export default function Header() {
         </Link>
 
         {/* Desktop Nav */}
-        <nav className="hidden md:flex items-center gap-8 text-white/90 font-medium tracking-wide">
-          {navItems.map((item) => {
+        <nav ref={navRef} className="hidden md:flex items-center gap-8 text-white/90 font-medium tracking-wide relative">
+          {/* Sliding indicator tracking the active link */}
+          <span
+            aria-hidden="true"
+            className={`absolute -bottom-2 h-0.5 rounded-full bg-rose-400 transition-all duration-300 ease-out ${
+              indicator.ready ? "opacity-100" : "opacity-0"
+            }`}
+            style={{ left: indicator.left, width: indicator.width }}
+          />
+          {navItems.map((item, index) => {
             const isActive = location.pathname === item.path;
             return (
               <Link
                 key={item.path}
+                ref={(el) => (linkRefs.current[index] = el)}
                 to={item.path}
                 className={`transition ${
                   isActive ? "text-rose-400 font-semibold" : "hover:text-white"
@@ -69,9 +100,6 @@ export default function Header() {
               </Link>
             );
           })}
-          <Link to="/contact" className="hover:text-white transition">
-            Contact
-          </Link>
         </nav>
 
         {/* Hamburger */}
@@ -121,14 +149,6 @@ export default function Header() {
               </Link>
             );
           })}
-
-          <Link
-            to="/contact"
-            className="text-2xl font-bold text-white/95 hover:text-rose-300 transition"
-            onClick={closeMenu}
-          >
-            Contact
-          </Link>
         </nav>
       </div>
     </header>

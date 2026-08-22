@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import { Link } from "react-router-dom";
 import {
   Sparkles,
@@ -23,6 +23,20 @@ const ACCENT_ICON_TINT = {
   red: "text-red-600",
   emerald: "text-emerald-600",
 };
+
+const ACCENT_BADGE = {
+  blue: "border-blue-500 text-blue-600",
+  indigo: "border-indigo-500 text-indigo-600",
+  red: "border-red-500 text-red-600",
+  emerald: "border-emerald-500 text-emerald-600",
+};
+
+// Skip the JS-driven stagger delay for users who've asked their OS to
+// reduce motion - the CSS override already collapses transition duration
+// to near-zero, but transition-delay isn't a duration and needs its own guard.
+const prefersReducedMotion = () =>
+  typeof window !== "undefined" &&
+  window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
 function CardArt({ image, alt, accent, AccentIcon }) {
   return (
@@ -54,6 +68,26 @@ export default function CarePathway() {
       return next;
     });
   };
+
+  // Entrance animation - triggers once the steps grid scrolls into view
+  const gridWrapRef = useRef(null);
+  const [inView, setInView] = useState(false);
+
+  useEffect(() => {
+    const el = gridWrapRef.current;
+    if (!el) return;
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setInView(true);
+          observer.disconnect();
+        }
+      },
+      { threshold: 0.15 }
+    );
+    observer.observe(el);
+    return () => observer.disconnect();
+  }, []);
 
   const steps = [
     {
@@ -135,59 +169,94 @@ export default function CarePathway() {
         </div>
 
         {/* Steps */}
-        <div className="grid gap-10 md:grid-cols-2 xl:grid-cols-4">
+        <div ref={gridWrapRef} className="relative">
+          {/* Connecting line - horizontal once all 4 steps share a single row (xl+) */}
+          <div
+            className={`hidden xl:block absolute top-0 left-[12.5%] right-[12.5%] h-0.5 bg-gradient-to-r from-blue-300 via-indigo-300 to-emerald-300 origin-left transition-transform duration-[1200ms] ease-out ${
+              inView ? "scale-x-100" : "scale-x-0"
+            }`}
+          />
+          {/* Connecting line - vertical while steps stack in a single column */}
+          <div
+            className={`md:hidden absolute left-1/2 -translate-x-1/2 top-4 bottom-4 w-0.5 bg-gradient-to-b from-blue-300 via-indigo-300 to-emerald-300 origin-top transition-transform duration-[1200ms] ease-out ${
+              inView ? "scale-y-100" : "scale-y-0"
+            }`}
+          />
+
+          <div className="grid gap-10 md:grid-cols-2 xl:grid-cols-4">
           {steps.map((step, index) => (
             <div
               key={index}
-              className="bg-white rounded-2xl overflow-hidden shadow-md hover:shadow-xl hover:-translate-y-1 transition-all duration-300 h-full flex flex-col"
+              style={{
+                transitionDelay: inView && !prefersReducedMotion() ? `${index * 150}ms` : "0ms",
+              }}
+              className={`relative h-full transition-all duration-700 ease-out ${
+                inView ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6"
+              }`}
             >
-              {/* Illustration - bleeds to the card's top and side edges */}
-              <CardArt {...step.art} accent={step.accent} />
+              {/* Step number badge - sits on this outer wrapper so the card's overflow-hidden doesn't clip it */}
+              <div
+                style={{
+                  transitionDelay:
+                    inView && !prefersReducedMotion() ? `${200 + index * 150}ms` : "0ms",
+                }}
+                className={`absolute -top-4 left-1/2 -translate-x-1/2 z-10 w-8 h-8 rounded-full bg-white shadow-md border-2 flex items-center justify-center text-xs font-bold transition-all duration-500 ease-out ${
+                  inView ? "scale-100 opacity-100" : "scale-0 opacity-0"
+                } ${ACCENT_BADGE[step.accent]}`}
+              >
+                {String(index + 1).padStart(2, "0")}
+              </div>
 
-              <div className="p-6 pt-5 flex flex-col flex-1">
-                {/* Content */}
-                <h3 className="text-sm font-semibold text-gray-900 mb-3 whitespace-nowrap overflow-hidden">
-                  {step.title}
-                </h3>
+              <div className="bg-white rounded-2xl overflow-hidden shadow-md hover:shadow-xl hover:-translate-y-1 transition-all duration-300 h-full flex flex-col">
+                {/* Illustration - bleeds to the card's top and side edges */}
+                <CardArt {...step.art} accent={step.accent} />
 
-                <ul className="space-y-2">
-                  {step.descriptionPoints.map((point, idx) => (
-                    <li key={idx} className="flex items-center gap-2 text-gray-700 leading-relaxed">
-                      <Check size={15} strokeWidth={2.75} className="text-emerald-600 shrink-0" />
-                      <span className="whitespace-nowrap">{point}</span>
-                    </li>
-                  ))}
-                </ul>
+                <div className="p-6 pt-5 flex flex-col flex-1">
+                  {/* Content */}
+                  <h3 className="text-sm font-semibold text-gray-900 mb-3 whitespace-nowrap overflow-hidden">
+                    {step.title}
+                  </h3>
 
-                {/* Expandable detail */}
-                <div className="mt-auto pt-4">
-                  <button
-                    type="button"
-                    onClick={() => toggleStep(index)}
-                    aria-expanded={expanded[index]}
-                    className={`flex items-center gap-1.5 text-xs font-semibold uppercase tracking-wide ${ACCENT_ICON_TINT[step.accent]} hover:opacity-75 transition-opacity duration-200`}
-                  >
-                    {expanded[index] ? "Show less" : "Learn more"}
-                    <ChevronDown
-                      size={14}
-                      strokeWidth={2.5}
-                      className={`transition-transform duration-300 ${expanded[index] ? "rotate-180" : ""}`}
-                    />
-                  </button>
+                  <ul className="space-y-2">
+                    {step.descriptionPoints.map((point, idx) => (
+                      <li key={idx} className="flex items-center gap-2 text-gray-700 leading-relaxed">
+                        <Check size={15} strokeWidth={2.75} className="text-emerald-600 shrink-0" />
+                        <span className="whitespace-nowrap">{point}</span>
+                      </li>
+                    ))}
+                  </ul>
 
-                  <div
-                    className={`grid transition-all duration-300 ease-out ${
-                      expanded[index] ? "grid-rows-[1fr] opacity-100 mt-3" : "grid-rows-[0fr] opacity-0 mt-0"
-                    }`}
-                  >
-                    <p className="overflow-hidden text-sm text-gray-500 leading-relaxed text-justify">
-                      {step.detail}
-                    </p>
+                  {/* Expandable detail */}
+                  <div className="mt-auto pt-4">
+                    <button
+                      type="button"
+                      onClick={() => toggleStep(index)}
+                      aria-expanded={expanded[index]}
+                      className={`flex items-center gap-1.5 text-xs font-semibold uppercase tracking-wide ${ACCENT_ICON_TINT[step.accent]} hover:opacity-75 transition-opacity duration-200`}
+                    >
+                      {expanded[index] ? "Show less" : "Learn more"}
+                      <ChevronDown
+                        size={14}
+                        strokeWidth={2.5}
+                        className={`transition-transform duration-300 ${expanded[index] ? "rotate-180" : ""}`}
+                      />
+                    </button>
+
+                    <div
+                      className={`grid transition-all duration-300 ease-out ${
+                        expanded[index] ? "grid-rows-[1fr] opacity-100 mt-3" : "grid-rows-[0fr] opacity-0 mt-0"
+                      }`}
+                    >
+                      <p className="overflow-hidden text-sm text-gray-500 leading-relaxed text-justify">
+                        {step.detail}
+                      </p>
+                    </div>
                   </div>
                 </div>
               </div>
             </div>
           ))}
+          </div>
         </div>
 
         {/* CTA */}

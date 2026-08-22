@@ -17,6 +17,44 @@ body {
   font-weight: 600;
 }
 
+/* Soft breathing glow for the Hero divider streak */
+@keyframes streak-pulse {
+  0%, 100% {
+    opacity: 0.85;
+    box-shadow: 0 0 0px 0px rgba(59, 130, 246, 0);
+  }
+  50% {
+    opacity: 1;
+    box-shadow: 0 0 14px 2px rgba(59, 130, 246, 0.55);
+  }
+}
+
+/* Gentle fade-up used for staggered entrance reveals (Hero trust badges, etc.) */
+@keyframes fade-in-up {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Respect the user's OS-level motion preference. Content still reaches its
+   final visible state (JS-driven state changes are untouched) - this only
+   collapses the transition/animation duration so nothing moves. */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
 /* .clay-shadow {
   box-shadow: inset 8px 8px 16px rgba(0,0,0,0.5),
               inset -8px -8px 16px rgba(255,255,255,0.05),
