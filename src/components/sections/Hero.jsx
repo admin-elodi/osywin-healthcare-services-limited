@@ -138,9 +138,9 @@ export default function Hero() {
           type="button"
           onClick={scrollToNext}
           aria-label="Scroll to learn more"
-          className="cursor-pointer absolute bottom-5 left-1/2 -translate-x-1/2 z-10 w-9 h-9 rounded-full border border-white/40 text-white/80 flex items-center justify-center hover:text-white hover:border-white/70 hover:bg-white/10 transition-colors duration-300 animate-bounce"
+          className="cursor-pointer absolute bottom-5 left-1/2 -translate-x-1/2 z-10 w-10 h-10 rounded-full bg-blue-600 text-white shadow-lg shadow-blue-950/40 flex items-center justify-center hover:bg-blue-500 hover:scale-105 transition-all duration-300 animate-bounce"
         >
-          <ChevronDown size={18} />
+          <ChevronDown size={20} strokeWidth={2.75} />
         </button>
       </section>
 
