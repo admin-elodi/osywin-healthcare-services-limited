@@ -1,6 +1,6 @@
 // src/pages/Winn.jsx
 import React from "react";
-import winnBg from '@/assets/images/winn-support.webp';
+import winnBg from '@/assets/images/winn-support.jpg';
 
 const winnPrograms = [
   {

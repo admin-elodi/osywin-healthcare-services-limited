@@ -1,6 +1,6 @@
 // src/pages/Renewed.jsx
 import React from "react";
-import renewedBg from '@/assets/images/renewed-alpine-lake.webp';
+import renewedBg from '@/assets/images/renewed-alpine-lake.jpg';
 
 const renewedPrograms = [
   {

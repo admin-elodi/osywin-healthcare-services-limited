@@ -12,10 +12,10 @@ import {
 
 // Photos live in src/assets/images/cards/ - see README-CARD-IMAGES.txt for
 // download links, licensing, and the exact filenames expected below.
-import beginConversationImg from "@/assets/images/cards/begin-conversation.webp";
-import clinicalAssessmentImg from "@/assets/images/cards/clinical-assessment.webp";
-import personalizedCareImg from "@/assets/images/cards/personalized-care.webp";
-import ongoingGuidanceImg from "@/assets/images/cards/ongoing-guidance.webp";
+import beginConversationImg from "@/assets/images/cards/begin-conversation.jpg";
+import clinicalAssessmentImg from "@/assets/images/cards/clinical-assessment.jpg";
+import personalizedCareImg from "@/assets/images/cards/personalized-care.jpg";
+import ongoingGuidanceImg from "@/assets/images/cards/ongoing-guidance.jpg";
 
 const ACCENT_ICON_TINT = {
   blue: "text-blue-600",

@@ -10,7 +10,9 @@
     "build": "vite build",
     "lint": "eslint .",
     "preview": "vite preview",
-    "convert-images": "node convert-to-webp.js"
+    "optimize-media": "node convert-and-optimize.js",
+    "optimize-media:reoptimize": "node convert-and-optimize.js --reoptimize-existing",
+    "optimize-media:dry-run": "node convert-and-optimize.js --dry-run"
   },
   "dependencies": {
     "@tailwindcss/vite": "^4.1.10",

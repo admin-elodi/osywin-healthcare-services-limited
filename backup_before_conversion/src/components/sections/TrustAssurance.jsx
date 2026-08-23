@@ -10,14 +10,14 @@ import {
 
 // Section background - a cool, calm, light sky photo. See
 // README-CARD-IMAGES.txt for the download link and licensing.
-import trustBackground from "@/assets/images/trust-background.webp";
+import trustBackground from "@/assets/images/trust-background.jpg";
 
 // Photos live in src/assets/images/cards/ - see README-CARD-IMAGES.txt for
 // download links, licensing, and the exact filenames expected below.
-import licensedProfessionalsImg from "@/assets/images/cards/licensed-professionals.webp";
-import confidentialSecureImg from "@/assets/images/cards/confidential-secure.webp";
-import evidenceBasedImg from "@/assets/images/cards/evidence-based.webp";
-import compassionateCareImg from "@/assets/images/cards/compassionate-care.webp";
+import licensedProfessionalsImg from "@/assets/images/cards/licensed-professionals.jpg";
+import confidentialSecureImg from "@/assets/images/cards/confidential-secure.jpg";
+import evidenceBasedImg from "@/assets/images/cards/evidence-based.jpg";
+import compassionateCareImg from "@/assets/images/cards/compassionate-care.jpg";
 
 // Skip the JS-driven stagger delay for users who've asked their OS to
 // reduce motion - the CSS override already collapses transition duration
