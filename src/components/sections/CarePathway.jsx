@@ -20,14 +20,14 @@ import ongoingGuidanceImg from "@/assets/images/cards/ongoing-guidance.jpg";
 const ACCENT_ICON_TINT = {
   blue: "text-blue-600",
   indigo: "text-indigo-600",
-  red: "text-red-600",
+  red: "text-red-500",
   emerald: "text-emerald-600",
 };
 
 const ACCENT_BADGE = {
   blue: "border-blue-500 text-blue-600",
   indigo: "border-indigo-500 text-indigo-600",
-  red: "border-red-500 text-red-600",
+  red: "border-red-500 text-red-500",
   emerald: "border-emerald-500 text-emerald-600",
 };
 

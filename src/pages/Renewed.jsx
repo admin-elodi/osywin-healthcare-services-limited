@@ -1,6 +1,6 @@
 // src/pages/Renewed.jsx
 import React from "react";
-import renewedBg from '@/assets/images/renewed-sunrise.jpg';
+import renewedBg from '@/assets/images/renewed-alpine-lake.jpg';
 
 const renewedPrograms = [
   {
@@ -42,16 +42,18 @@ export default function Renewed() {
         backgroundRepeat: 'no-repeat',
       }}
     >
-      {/* Subtle overlay for readability on varying image brightness */}
+      {/* Overlay for readability - darkest behind the header text where the
+          sky is brightest, easing off lower down where the water is already dark */}
       <div className="absolute inset-0 bg-black/35" />
+      <div className="absolute inset-x-0 top-0 h-[28rem] bg-gradient-to-b from-black/55 via-black/25 to-transparent" />
 
       <div className="max-w-7xl mx-auto relative z-10">
         {/* Header */}
         <div className="text-center mb-20">
-          <h2 className="text-[15px] md:text-2xl font-semibold bg-gradient-to-r from-emerald-600 via-teal-600 to-cyan-600 bg-clip-text text-transparent mb-6">
+          <h2 className="text-lg md:text-3xl font-bold text-red-500 drop-shadow-[0_2px_10px_rgba(0,0,0,0.75)] mb-6">
             Renewed Wellness & Recovery Services
           </h2>
-          <p className="text-xl text-white max-w-3xl mx-auto leading-relaxed">
+          <p className="text-xl text-white max-w-3xl mx-auto leading-relaxed drop-shadow-[0_1px_6px_rgba(0,0,0,0.6)]">
             Holistic recovery and wellness programs empowering individuals to
             rebuild, heal, and sustain a meaningful life in recovery.
           </p>

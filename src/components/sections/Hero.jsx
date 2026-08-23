@@ -82,7 +82,7 @@ export default function Hero() {
           <div className="mt-5 sm:mt-4 flex flex-col items-center gap-1.5 max-w-2xl">
             <p className="text-slate-300 font-light whitespace-nowrap text-[clamp(9.5px,3.4vw,16px)]">
               Also home to{" "}
-              <span className="font-semibold text-red-400">
+              <span className="font-semibold text-red-500">
                 Renewed Wellness &amp; Recovery Services
               </span>
             </p>
@@ -362,16 +362,16 @@ function RecoveryProgramsModal({ onClose }) {
                   key={i}
                   className="rounded-2xl border border-slate-200 p-6 hover:border-red-200 hover:bg-red-50/30 hover:shadow-md transition-all duration-300 group"
                 >
-                  <div className="w-11 h-11 rounded-xl bg-red-50 text-red-600 flex items-center justify-center mb-4 group-hover:bg-red-100 transition-colors">
+                  <div className="w-11 h-11 rounded-xl bg-red-50 text-red-500 flex items-center justify-center mb-4 group-hover:bg-red-100 transition-colors">
                     <Icon size={20} />
                   </div>
-                  <h3 className="text-lg font-semibold text-slate-900 mb-4 group-hover:text-red-600 transition">
+                  <h3 className="text-lg font-semibold text-slate-900 mb-4 group-hover:text-red-500 transition">
                     {program.title}
                   </h3>
                   <ul className="space-y-2.5">
                     {program.items.map((item, idx) => (
                       <li key={idx} className="flex items-start gap-2.5 text-slate-600 font-light text-sm">
-                        <span className="w-1.5 h-1.5 mt-1.5 rounded-full bg-red-400 shrink-0" />
+                        <span className="w-1.5 h-1.5 mt-1.5 rounded-full bg-red-500 shrink-0" />
                         <span>{item}</span>
                       </li>
                     ))}

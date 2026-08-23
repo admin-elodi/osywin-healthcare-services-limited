@@ -104,17 +104,17 @@ export default function Footer() {
         {/* Renewed */}
         <div>
           <div className="h-9 sm:h-9 lg:h-8 xl:h-10 flex items-center mb-8">
-            <h3 className="text-sm font-semibold text-red-400 uppercase tracking-wider">
+            <h3 className="text-sm font-semibold text-red-500 uppercase tracking-wider">
               Renewed Wellness
             </h3>
           </div>
           <ul className="space-y-3 text-sm text-slate-300">
             <li className="flex items-start gap-2 hover:text-white transition-colors duration-200 cursor-default">
-              <span className="w-1 h-1 mt-2 rounded-full bg-red-400/70 shrink-0" />
+              <span className="w-1 h-1 mt-2 rounded-full bg-red-500/70 shrink-0" />
               Outpatient Substance Abuse Treatment
             </li>
             <li className="flex items-start gap-2 hover:text-white transition-colors duration-200 cursor-default">
-              <span className="w-1 h-1 mt-2 rounded-full bg-red-400/70 shrink-0" />
+              <span className="w-1 h-1 mt-2 rounded-full bg-red-500/70 shrink-0" />
               Peer Recovery Support Services
             </li>
           </ul>
@@ -130,19 +130,19 @@ export default function Footer() {
 
           <div className="space-y-6 text-sm text-slate-300">
             <div className="flex items-start gap-3 hover:text-white transition-colors duration-200 group">
-              <Phone size={16} className="mt-1 text-red-400 shrink-0" />
+              <Phone size={16} className="mt-1 text-red-500 shrink-0" />
               <a href="tel:+13026966238" className="font-medium hover:text-blue-300 hover:underline">
                 302-696-6238
               </a>
             </div>
 
             <div className="flex items-start gap-3 hover:text-white transition-colors duration-200 group">
-              <Mail size={16} className="mt-1 text-red-400 shrink-0" />
+              <Mail size={16} className="mt-1 text-red-500 shrink-0" />
               <p><strong className="text-slate-200">Email:</strong> <a href="mailto:osywinhc@gmail.com" className="text-blue-400 hover:text-blue-300 hover:underline">osywinhc@gmail.com</a></p>
             </div>
 
             <div className="flex items-start gap-3 hover:text-white transition-colors duration-200 group">
-              <MapPin size={16} className="mt-1 text-red-400 shrink-0" />
+              <MapPin size={16} className="mt-1 text-red-500 shrink-0" />
               <a
                 href="https://www.google.com/maps/search/?api=1&query=113+Gloucester+Blvd+Lower+Level+Suite+Middletown+DE+19709"
                 target="_blank"

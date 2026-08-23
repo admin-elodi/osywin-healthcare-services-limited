@@ -37,7 +37,7 @@ function CardArt({ image, alt, AccentIcon }) {
       />
       {/* Gentle bottom scrim so the accent badge stays readable over any photo */}
       <div className="absolute inset-0 bg-gradient-to-t from-black/45 via-black/0 to-black/0" />
-      <div className="absolute bottom-3 right-3 w-7 h-7 rounded-full bg-white shadow-sm flex items-center justify-center text-red-600">
+      <div className="absolute bottom-3 right-3 w-7 h-7 rounded-full bg-white shadow-sm flex items-center justify-center text-red-500">
         <AccentIcon size={13} strokeWidth={2} />
       </div>
     </div>

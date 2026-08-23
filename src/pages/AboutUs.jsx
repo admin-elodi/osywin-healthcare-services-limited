@@ -1,6 +1,6 @@
 // src/pages/AboutUs.jsx
 import React from "react";
-import aboutBg from '@/assets/images/about-family.jpg';
+import aboutBg from '@/assets/images/cloud.webp';
 
 export default function AboutUs() {
   return (

@@ -80,7 +80,7 @@ export default function Header() {
           {/* Sliding indicator tracking the active link */}
           <span
             aria-hidden="true"
-            className={`absolute -bottom-2 h-0.5 rounded-full bg-rose-400 transition-all duration-300 ease-out ${
+            className={`absolute -bottom-2 h-0.5 rounded-full bg-red-500 transition-all duration-300 ease-out ${
               indicator.ready ? "opacity-100" : "opacity-0"
             }`}
             style={{ left: indicator.left, width: indicator.width }}
@@ -93,7 +93,7 @@ export default function Header() {
                 ref={(el) => (linkRefs.current[index] = el)}
                 to={item.path}
                 className={`transition ${
-                  isActive ? "text-rose-400 font-semibold" : "hover:text-white"
+                  isActive ? "text-red-500 font-semibold" : "hover:text-white"
                 }`}
               >
                 {item.label}
@@ -140,8 +140,8 @@ export default function Header() {
                 to={item.path}
                 className={`text-2xl font-bold transition ${
                   isActive
-                    ? "text-rose-400 scale-105"
-                    : "text-white/95 hover:text-rose-300"
+                    ? "text-red-500 scale-105"
+                    : "text-white/95 hover:text-red-300"
                 }`}
                 onClick={closeMenu}
               >

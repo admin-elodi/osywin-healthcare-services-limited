@@ -94,7 +94,7 @@ export default function Programs() {
           </p>
 
           {/* Organization 2 */}
-          <p className="uppercase text-[15px] md:text-2xl font-semibold text-rose-300">
+          <p className="uppercase text-[15px] md:text-2xl font-semibold text-red-500">
             Renewed Wellness & Recovery Services
           </p>
         </div>
@@ -104,10 +104,10 @@ export default function Programs() {
           {programs.map((program, index) => (
             <div
               key={index}
-              className="group bg-white/90 backdrop-blur-lg border border-rose-100/60 hover:border-red-300/70 rounded-2xl p-7 md:p-8 shadow-xl hover:shadow-2xl hover:shadow-red-200/40 transition-all duration-500 hover:-translate-y-3 flex flex-col h-full"
+              className="group bg-white/90 backdrop-blur-lg border border-rose-100/60 hover:border-red-500/70 rounded-2xl p-7 md:p-8 shadow-xl hover:shadow-2xl hover:shadow-red-200/40 transition-all duration-500 hover:-translate-y-3 flex flex-col h-full"
             >
               {/* Number */}
-              <div className="w-14 h-14 bg-gradient-to-br from-red-500 to-rose-600 rounded-xl flex items-center justify-center mb-6 group-hover:scale-110 group-hover:rotate-3 transition-all duration-400 flex-shrink-0 shadow-md">
+              <div className="w-14 h-14 bg-gradient-to-br from-red-500 to-red-600 rounded-xl flex items-center justify-center mb-6 group-hover:scale-110 group-hover:rotate-3 transition-all duration-400 flex-shrink-0 shadow-md">
                 <span className="text-white font-bold text-xl">
                   {index + 1}
                 </span>
@@ -115,7 +115,7 @@ export default function Programs() {
 
               {/* Content */}
               <div className="flex-1 flex flex-col">
-                <h3 className="text-2xl font-semibold text-gray-900 mb-4 group-hover:text-red-700 transition-colors">
+                <h3 className="text-2xl font-semibold text-gray-900 mb-4 group-hover:text-red-500 transition-colors">
                   {program.title}
                 </h3>
 
