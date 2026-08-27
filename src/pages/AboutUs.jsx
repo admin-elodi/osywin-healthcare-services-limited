@@ -1,6 +1,7 @@
 // src/pages/AboutUs.jsx
 import React from "react";
 import aboutBg from '@/assets/images/cloud.webp';
+import { WINN_SERVICES, RENEWED_SERVICES, ORG } from "@/content/siteContent";
 
 export default function AboutUs() {
   return (
@@ -31,57 +32,25 @@ export default function AboutUs() {
 
         {/* WINN Psychiatry Section */}
         <section className="space-y-10 mb-20">
-          <h2 className="text-xl font-bold text-blue-">
+          <h2 className="text-xl font-bold text-blue-600">
             WINN Psychiatry & Mental Health Services
           </h2>
 
           <div className="space-y-8 text-black leading-relaxed">
-            <div>
-              <h3 className="text-lg font-semibold border-b pb-1 mb-2">
-                Psychiatric Evaluation & Diagnostic Assessments
-              </h3>
-              <p>
-                We provide comprehensive psychiatric evaluations to understand
-                each client’s mental health needs, including assessment for
-                co-occurring disorders and treatment planning.
-              </p>
-            </div>
-
-            <div>
-              <h3 className="text-lg font-semibold text-gray-900 border-b pb-1 mb-2">
-                Medication Management
-              </h3>
-              <p>
-                Evidence-based medication management for depression, anxiety,
-                bipolar disorder, ADHD, PTSD, and related conditions.
-              </p>
-            </div>
-
-            <div>
-              <h3 className="text-lg font-semibold text-gray-900 border-b pb-1 mb-2">
-                Adult & Adolescent Mental Health Care
-              </h3>
-              <p>
-                Specialized services for children and adolescents addressing
-                emotional, behavioral, academic, and trauma-related challenges.
-              </p>
-            </div>
-
-            <div>
-              <h3 className="text-lg font-semibold text-gray-900 border-b pb-1 mb-2">
-                Telepsychiatry & Virtual Therapy
-              </h3>
-              <p>
-                Secure virtual sessions for convenient and accessible care
-                from the comfort of home.
-              </p>
-            </div>
+            {WINN_SERVICES.map((service) => (
+              <div key={service.title}>
+                <h3 className="text-lg font-semibold text-gray-900 border-b pb-1 mb-2">
+                  {service.title}
+                </h3>
+                <p>{service.description}</p>
+              </div>
+            ))}
           </div>
         </section>
 
         {/* Renewed Wellness Section */}
         <section className="space-y-10">
-          <h2 className="text-xl font-bold text-gray-900">
+          <h2 className="text-xl font-bold text-red-500">
             Renewed Wellness & Recovery Services
           </h2>
 

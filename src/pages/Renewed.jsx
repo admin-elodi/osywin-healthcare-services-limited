@@ -1,35 +1,7 @@
 // src/pages/Renewed.jsx
 import React from "react";
 import renewedBg from '@/assets/images/renewed-alpine-lake.webp';
-
-const renewedPrograms = [
-  {
-    title: "Outpatient Substance Abuse Treatment",
-    description:
-      "Structured weekly counseling for recovery while maintaining work, school, or family responsibilities.",
-    features: [
-      "Individual addiction counseling",
-      "Recovery planning",
-      "Craving and trigger management",
-      "Substance-use education",
-      "Relapse-prevention strategies",
-    ],
-  },
-  
-  {
-    title: "Peer Recovery Support Services",
-    description:
-      "Certified peer specialists providing guidance through lived recovery experience.",
-    features: [
-      "Recovery coaching",
-      "Encouragement and accountability",
-      "Goal-setting and planning",
-      "Life-skills support",
-      "Connection to community resources",
-    ],
-  },
-  
-];
+import { RENEWED_SERVICES } from "@/content/siteContent";
 
 export default function Renewed() {
   return (
@@ -61,7 +33,7 @@ export default function Renewed() {
 
         {/* Programs Grid */}
         <div className="grid md:grid-cols-2 gap-8">
-          {renewedPrograms.map((program, index) => (
+          {RENEWED_SERVICES.map((program, index) => (
             <div
               key={index}
               className="group bg-slate-400/80 backdrop-blur-xl border border-slate-100/50 hover:border-emerald-200/60 rounded-2xl p-8 flex flex-col hover:-translate-y-2 transition-all duration-500 hover:shadow-2xl hover:shadow-emerald-100/50"

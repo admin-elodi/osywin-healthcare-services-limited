@@ -3,6 +3,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { Mail, Phone, MapPin, Linkedin, ArrowUp } from "lucide-react";
 import logo from "@/assets/images/wellness-logo.webp";
+import { ORG, WINN_SERVICES, RENEWED_SERVICES } from "@/content/siteContent";
 
 const XIcon = ({ size = 18, className = "" }) => (
   <svg
@@ -42,18 +43,17 @@ export default function Footer() {
               className="h-9 sm:h-9 lg:h-8 xl:h-10 w-auto flex-shrink-0"
             />
             <h2 className="text-[clamp(11px,3.1vw,14px)] sm:text-[10px] lg:text-[10px] xl:text-[13px] font-semibold text-white whitespace-nowrap leading-tight">
-              OSYWIN Healthcare Services Limited
+              {ORG.name}
             </h2>
           </div>
 
           <p className="text-slate-400 leading-relaxed text-sm max-w-sm">
-            Family-centered psychiatric care, mental wellness, and recovery
-            services designed to support lasting stability and renewal.
+            {ORG.tagline}
           </p>
 
           <div className="flex items-center gap-4">
             <a
-              href="https://x.com/"
+              href={ORG.social.x}
               target="_blank"
               rel="noopener noreferrer"
               className="text-slate-400 hover:text-blue-400 hover:scale-110 transition-all duration-300 p-2 hover:bg-white/5 rounded-lg"
@@ -63,7 +63,7 @@ export default function Footer() {
             </a>
 
             <a
-              href="https://www.linkedin.com/"
+              href={ORG.social.linkedin}
               target="_blank"
               rel="noopener noreferrer"
               className="text-slate-400 hover:text-blue-400 hover:scale-110 transition-all duration-300 p-2 hover:bg-white/5 rounded-lg"
@@ -82,22 +82,15 @@ export default function Footer() {
             </h3>
           </div>
           <ul className="space-y-3 text-sm text-slate-300">
-            <li className="flex items-start gap-2 hover:text-white transition-colors duration-200 cursor-default">
-              <span className="w-1 h-1 mt-2 rounded-full bg-blue-400/70 shrink-0" />
-              Behavioral & Mental Health
-            </li>
-            <li className="flex items-start gap-2 hover:text-white transition-colors duration-200 cursor-default">
-              <span className="w-1 h-1 mt-2 rounded-full bg-blue-400/70 shrink-0" />
-              Family Support & Education
-            </li>
-            <li className="flex items-start gap-2 hover:text-white transition-colors duration-200 cursor-default">
-              <span className="w-1 h-1 mt-2 rounded-full bg-blue-400/70 shrink-0" />
-              Adult & Adolescent Care
-            </li>
-            <li className="flex items-start gap-2 hover:text-white transition-colors duration-200 cursor-default">
-              <span className="w-1 h-1 mt-2 rounded-full bg-blue-400/70 shrink-0" />
-              Prevention & Community Education Programs
-            </li>
+            {WINN_SERVICES.map((service) => (
+              <li
+                key={service.title}
+                className="flex items-start gap-2 hover:text-white transition-colors duration-200 cursor-default"
+              >
+                <span className="w-1 h-1 mt-2 rounded-full bg-blue-400/70 shrink-0" />
+                {service.title}
+              </li>
+            ))}
           </ul>
         </div>
 
@@ -109,14 +102,15 @@ export default function Footer() {
             </h3>
           </div>
           <ul className="space-y-3 text-sm text-slate-300">
-            <li className="flex items-start gap-2 hover:text-white transition-colors duration-200 cursor-default">
-              <span className="w-1 h-1 mt-2 rounded-full bg-red-500/70 shrink-0" />
-              Outpatient Substance Abuse Treatment
-            </li>
-            <li className="flex items-start gap-2 hover:text-white transition-colors duration-200 cursor-default">
-              <span className="w-1 h-1 mt-2 rounded-full bg-red-500/70 shrink-0" />
-              Peer Recovery Support Services
-            </li>
+            {RENEWED_SERVICES.map((service) => (
+              <li
+                key={service.title}
+                className="flex items-start gap-2 hover:text-white transition-colors duration-200 cursor-default"
+              >
+                <span className="w-1 h-1 mt-2 rounded-full bg-red-500/70 shrink-0" />
+                {service.title}
+              </li>
+            ))}
           </ul>
         </div>
 
@@ -131,26 +125,26 @@ export default function Footer() {
           <div className="space-y-6 text-sm text-slate-300">
             <div className="flex items-start gap-3 hover:text-white transition-colors duration-200 group">
               <Phone size={16} className="mt-1 text-red-500 shrink-0" />
-              <a href="tel:+13026966238" className="font-medium hover:text-blue-300 hover:underline">
-                302-696-6238
+              <a href={`tel:${ORG.phoneHref}`} className="font-medium hover:text-blue-300 hover:underline">
+                {ORG.phone}
               </a>
             </div>
 
             <div className="flex items-start gap-3 hover:text-white transition-colors duration-200 group">
               <Mail size={16} className="mt-1 text-red-500 shrink-0" />
-              <p><strong className="text-slate-200">Email:</strong> <a href="mailto:osywinhc@gmail.com" className="text-blue-400 hover:text-blue-300 hover:underline">osywinhc@gmail.com</a></p>
+              <p><strong className="text-slate-200">Email:</strong> <a href={`mailto:${ORG.email}`} className="text-blue-400 hover:text-blue-300 hover:underline">{ORG.email}</a></p>
             </div>
 
             <div className="flex items-start gap-3 hover:text-white transition-colors duration-200 group">
               <MapPin size={16} className="mt-1 text-red-500 shrink-0" />
               <a
-                href="https://www.google.com/maps/search/?api=1&query=113+Gloucester+Blvd+Lower+Level+Suite+Middletown+DE+19709"
+                href={ORG.address.mapsQuery}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="leading-relaxed hover:text-blue-300 hover:underline"
               >
-                113 Gloucester Blvd, Lower Level Suite<br />
-                <span className="font-medium text-slate-200 group-hover:text-blue-300">Middletown, DE 19709, USA</span>
+                {ORG.address.street}<br />
+                <span className="font-medium text-slate-200 group-hover:text-blue-300">{ORG.address.cityStateZip}</span>
               </a>
             </div>
           </div>
@@ -179,7 +173,7 @@ export default function Footer() {
 
         <div className="text-center mt-12 text-slate-500 tracking-wide">
           <p className="font-medium whitespace-nowrap text-[clamp(11px,3.5vw,16px)]">
-            © {new Date().getFullYear()} OSYWIN Healthcare Services Limited
+            © {new Date().getFullYear()} {ORG.name}
           </p>
           <p className="text-[10px] mt-3 font-medium text-slate-600 hover:text-slate-400 transition-colors duration-200">
             Site Design by JungleX: +2348136573235

@@ -13,6 +13,64 @@ import PrivacyPolicy from '@/pages/PrivacyPolicy';
 import SmsTerms from '@/pages/SmsTerms';
 import Contact from '@/pages/Contact';
 
+// Per-route <title> and meta description. React Router doesn't touch either
+// on navigation by default, so without this every page - Programs, Privacy
+// Policy, whatever - shares the same generic homepage title/description in
+// the browser tab, bookmarks, and search results.
+const PAGE_META = {
+  '/': {
+    title: 'OSYWIN Healthcare Services Limited | WINN Psychiatry & Renewed Wellness',
+    description: 'Compassionate, evidence-based psychiatric care and addiction recovery support in Middletown, DE - WINN Psychiatry & Mental Health Services and Renewed Wellness & Recovery Services.',
+  },
+  '/programs': {
+    title: 'Our Programs | OSYWIN Healthcare Services Limited',
+    description: 'Explore our comprehensive psychiatric and recovery programs, from outpatient substance abuse treatment to behavioral health counseling and peer recovery support.',
+  },
+  '/winn': {
+    title: 'WINN Psychiatry & Mental Health Services | OSYWIN Healthcare',
+    description: 'Behavioral & mental health counseling, family support & education, adult & adolescent care, and community prevention programs from WINN Psychiatry.',
+  },
+  '/renewed': {
+    title: 'Renewed Wellness & Recovery Services | OSYWIN Healthcare',
+    description: 'Holistic recovery and wellness programs empowering individuals to rebuild, heal, and sustain a meaningful life in recovery.',
+  },
+  '/about-us': {
+    title: 'About Us | OSYWIN Healthcare Services Limited',
+    description: 'Learn about OSYWIN Healthcare Services Limited and our mission to deliver compassionate, evidence-based mental health and recovery services.',
+  },
+  '/contact': {
+    title: 'Contact Us | OSYWIN Healthcare Services Limited',
+    description: 'Get in touch with OSYWIN Healthcare Services Limited - call, email, or send us a message to get started.',
+  },
+  '/privacy-policy': {
+    title: 'Privacy Policy | OSYWIN Healthcare Services Limited',
+    description: 'Read the OSYWIN Healthcare Services Limited privacy policy.',
+  },
+  '/sms-terms': {
+    title: 'SMS Terms & Conditions | OSYWIN Healthcare Services Limited',
+    description: 'Read the OSYWIN Healthcare Services Limited SMS terms and conditions.',
+  },
+};
+
+function DocumentMeta() {
+  const { pathname } = useLocation();
+
+  useEffect(() => {
+    const meta = PAGE_META[pathname] || PAGE_META['/'];
+    document.title = meta.title;
+
+    let descTag = document.querySelector('meta[name="description"]');
+    if (!descTag) {
+      descTag = document.createElement('meta');
+      descTag.setAttribute('name', 'description');
+      document.head.appendChild(descTag);
+    }
+    descTag.setAttribute('content', meta.description);
+  }, [pathname]);
+
+  return null;
+}
+
 // Handles:
 // 1. Scroll to top on normal route changes
 // 2. Scroll to #contact (Footer) when URL has /#contact
@@ -47,7 +105,8 @@ function App() {
   return (
     <Router>
       <Header />
-      
+
+      <DocumentMeta />
       <ScrollManager />
 
       <Routes>

@@ -1,56 +1,7 @@
 // src/pages/Winn.jsx
 import React from "react";
 import winnBg from '@/assets/images/winn-support.webp';
-
-const winnPrograms = [
-  {
-    title: "Behavioral & Mental Health Counseling",
-    description:
-      "Professional services to manage emotional and psychological challenges.",
-    features: [
-      "Anxiety & stress",
-      "Depression",
-      "Trauma & PTSD",
-      "Anger issues",
-      "Emotional instability",
-      "Life transitions",
-    ],
-  },
-  {
-    title: "Family Support & Education",
-    description:
-      "Support services for families affected by mental health and substance-related challenges.",
-    features: [
-      "Family therapy",
-      "Educational workshops",
-      "Communication rebuilding",
-      "Reconciliation and healing support",
-      "Tools for supporting a loved one",
-    ],
-  },
-  {
-    title: "Adult & Adolescent Care",
-    description:
-      "Community-focused Adult & Adolescent Care",
-    features: [
-      "Mental health awareness seminars",
-      "Youth and teen education programs",
-      "Workplace mental wellness training",
-      "Faith-based mental health education",
-    ],
-  },
-  {
-    title: "Prevention & Community Education Programs",
-    description:
-      "Community-focused mental health education and preventive outreach.",
-    features: [
-      "Mental health awareness seminars",
-      "Youth and teen education programs",
-      "Workplace mental wellness training",
-      "Faith-based mental health education",
-    ],
-  },
-];
+import { WINN_SERVICES } from "@/content/siteContent";
 
 export default function Winn() {
   return (
@@ -80,7 +31,7 @@ export default function Winn() {
 
         {/* Programs Grid */}
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {winnPrograms.map((program, index) => (
+          {WINN_SERVICES.map((program, index) => (
             <div
               key={index}
               className="group bg-white/80 backdrop-blur-xl border border-slate-100/50 hover:border-blue-200/60 rounded-2xl p-8 flex flex-col hover:-translate-y-2 transition-all duration-500 hover:shadow-2xl hover:shadow-blue-100/50"

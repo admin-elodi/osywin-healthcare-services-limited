@@ -2,13 +2,91 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!-- Favicon / touch icons -->
+    <link rel="icon" href="/favicon.ico" sizes="any" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+    <link rel="manifest" href="/site.webmanifest" />
+    <meta name="theme-color" content="#0f172a" />
+
+    <!-- Primary SEO -->
+    <title>OSYWIN Healthcare Services Limited | WINN Psychiatry &amp; Renewed Wellness</title>
+    <meta name="description" content="OSYWIN Healthcare Services Limited provides compassionate, evidence-based psychiatric care through WINN Psychiatry & Mental Health Services and addiction recovery support through Renewed Wellness & Recovery Services, in Middletown, DE." />
+    <link rel="canonical" href="https://www.osywin.com/" />
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="OSYWIN Healthcare Services Limited" />
+    <meta property="og:title" content="OSYWIN Healthcare Services Limited | WINN Psychiatry & Renewed Wellness" />
+    <meta property="og:description" content="Compassionate, evidence-based psychiatric care and addiction recovery support - WINN Psychiatry & Mental Health Services and Renewed Wellness & Recovery Services, in Middletown, DE." />
+    <meta property="og:url" content="https://www.osywin.com/" />
+    <meta property="og:image" content="https://www.osywin.com/og-image.jpg" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:locale" content="en_US" />
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="OSYWIN Healthcare Services Limited" />
+    <meta name="twitter:description" content="Compassionate, evidence-based psychiatric care and addiction recovery support in Middletown, DE." />
+    <meta name="twitter:image" content="https://www.osywin.com/og-image.jpg" />
+
     <!-- Montserrat plus Playfair Display, Raleway, Inter fonts for stylish options -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;700&family=Playfair+Display&family=Raleway&family=Inter&display=swap" rel="stylesheet" />
-    <title>OSYWIN Healthcare Services Limited</title>
+
+    <!-- ============================================================
+         Analytics (Google Analytics 4) — SCAFFOLD ONLY, NOT ACTIVE.
+         No real Measurement ID was available when this was added, so the
+         snippet is left commented out rather than wired up with a fake one.
+         To activate: get your Measurement ID from GA4 Admin > Data Streams
+         > your web stream (format: G-XXXXXXXXXX), replace both occurrences
+         of G-XXXXXXXXXX below, then uncomment the <script> tags.
+         ============================================================ -->
+    <!--
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-XXXXXXXXXX');
+    </script>
+    -->
+
+    <!-- Structured data: local medical business -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "MedicalBusiness",
+        "name": "OSYWIN Healthcare Services Limited",
+        "alternateName": ["WINN Psychiatry & Mental Health Services", "Renewed Wellness & Recovery Services"],
+        "description": "Compassionate, evidence-based psychiatric care, medication management, and addiction recovery support services.",
+        "url": "https://www.osywin.com/",
+        "logo": "https://www.osywin.com/apple-touch-icon.png",
+        "image": "https://www.osywin.com/og-image.jpg",
+        "telephone": "+13026966238",
+        "email": "osywinhc@gmail.com",
+        "address": {
+          "@type": "PostalAddress",
+          "streetAddress": "113 Gloucester Blvd, Lower Level Suite",
+          "addressLocality": "Middletown",
+          "addressRegion": "DE",
+          "postalCode": "19709",
+          "addressCountry": "US"
+        },
+        "openingHoursSpecification": {
+          "@type": "OpeningHoursSpecification",
+          "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
+          "opens": "09:00",
+          "closes": "17:00"
+        },
+        "medicalSpecialty": ["Psychiatric", "Addiction"]
+      }
+    </script>
   </head>
   <body>
     <div id="root"></div>
