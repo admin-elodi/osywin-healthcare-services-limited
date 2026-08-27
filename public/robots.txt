@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://www.osywin.com/sitemap.xml
+Sitemap: https://osywin.com/sitemap.xml
