@@ -1,9 +1,18 @@
 // src/components/Programs.jsx
+//
+// ALTERNATIVE A — Editorial rows.
+//
+// Instead of three equal-weight cards side by side, each program gets its
+// own full-width band with a large numeral/icon fixed on the left and the
+// title/description/features on the right, consistently down the page.
+// This reads more like an editorial "our services" spread than a
+// pricing-table grid, gives each program more breathing room, and scans
+// naturally top-to-bottom on mobile without needing a grid to collapse.
 import React from "react";
 import { Activity, Brain, Users } from "lucide-react";
 
 // Background image
-import backgroundImage from "@/assets/images/chart.jpg";
+import backgroundImage from "@/assets/images/people.jpg";
 
 const programs = [
   {
@@ -17,12 +26,8 @@ const programs = [
       "Substance-use education",
       "Relapse-prevention strategies",
     ],
-    // Large, low-opacity watermark icon per card - gives each card its own
-    // graphical identity and, being flat vector line-art, contrasts with
-    // the busy photographic chart texture behind the whole section.
     icon: Activity,
   },
-
   {
     title: "Behavioral & Mental Health Counseling",
     description:
@@ -50,7 +55,6 @@ const programs = [
     ],
     icon: Users,
   },
-
 ];
 
 export default function Programs() {
@@ -65,103 +69,75 @@ export default function Programs() {
         backgroundRepeat: "no-repeat",
       }}
     >
-      {/* Overlay - even wash for legibility over the card grid, plus a
-          stronger top scrim behind the header text where the source photo
-          is brightest */}
       <div className="absolute inset-0 bg-black/40" />
       <div className="absolute inset-x-0 top-0 h-[26rem] bg-gradient-to-b from-black/70 via-black/35 to-transparent" />
 
-      {/* Content */}
-      <div className="relative z-10 max-w-7xl mx-auto py-24 md:py-28 lg:py-32 px-6 md:px-12 lg:px-16">
+      <div className="relative z-10 max-w-6xl mx-auto py-24 md:py-28 lg:py-32 px-6 md:px-10 lg:px-12">
 
-        {/* Header */}
+        {/* Header - unchanged */}
         <div className="text-center mb-16 md:mb-20 space-y-4 ocean-float">
-
-          {/* Main Title */}
           <h2 className="text-lg md:text-2xl font-semibold text-white tracking-widest mt-10 drop-shadow-[0_2px_8px_rgba(0,0,0,0.65)]">
             Our Comprehensive Programs
           </h2>
-
-          {/* Subtitle */}
           <p className="text-lg md:text-xl text-gray-200 drop-shadow-[0_1px_6px_rgba(0,0,0,0.6)]">
             Integrated care through
           </p>
-
-          {/* Organization 1 */}
           <p className="text-[16px] md:text-2xl font-semibold text-blue-400 drop-shadow-[0_1px_6px_rgba(0,0,0,0.6)]">
             WINN Psychiatry & Mental Health Services
           </p>
-
-          {/* The subtle "and" */}
           <p className="text-sm uppercase tracking-widest text-gray-400 drop-shadow-[0_1px_4px_rgba(0,0,0,0.6)]">
             and
           </p>
-
-          {/* Organization 2 */}
           <p className="uppercase text-[15px] md:text-2xl font-semibold text-red-500 drop-shadow-[0_1px_6px_rgba(0,0,0,0.6)]">
             Renewed Wellness & Recovery Services
           </p>
         </div>
 
-        {/* Programs Grid */}
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 lg:gap-10">
+        {/* Alternating rows */}
+        <div className="space-y-6 md:space-y-8">
           {programs.map((program, index) => {
-            const ProgramIcon = program.icon;
+            const Icon = program.icon;
             return (
               <div
                 key={index}
-                className="group relative bg-white/90 backdrop-blur-lg border border-rose-100/60 hover:border-red-500/70 rounded-2xl p-7 md:p-8 shadow-xl hover:shadow-2xl hover:shadow-red-200/40 transition-all duration-500 hover:-translate-y-3 flex flex-col h-full overflow-hidden"
+                className="group relative bg-white/10 backdrop-blur-2xl border border-white/25 hover:border-red-400/60 rounded-3xl shadow-[0_8px_32px_rgba(0,0,0,0.35)] hover:shadow-[0_8px_44px_rgba(239,68,68,0.3)] transition-all duration-500 overflow-hidden hover:bg-white/[0.16]"
               >
-                {/* Graph-paper dot grid - a quiet nod to the chart/data theme
-                    of the section background. Its perfectly regular geometry
-                    is the contrast: flat and orderly against the busy,
-                    organic texture of the photo behind the card. */}
-                <div
-                  className="absolute inset-0 pointer-events-none"
-                  style={{
-                    backgroundImage:
-                      "radial-gradient(circle, rgba(15,23,42,0.28) 1.5px, transparent 1.5px)",
-                    backgroundSize: "18px 18px",
-                  }}
-                />
+                {/* Glass sheen - a thin bright line along the top edge and a
+                    soft glow in one corner, so the transparency reads as
+                    polished glass rather than a plain faded panel. */}
+                <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-white/70 to-transparent pointer-events-none" />
+                <div className="absolute -top-20 -left-20 w-56 h-56 bg-white/15 rounded-full blur-3xl pointer-events-none" />
 
-                {/* Per-program watermark icon, bleeding off the corner */}
-                {ProgramIcon && (
-                  <ProgramIcon
-                    className="absolute -bottom-6 -right-6 text-red-500 pointer-events-none"
-                    style={{ opacity: 0.16 }}
-                    size={190}
-                    strokeWidth={1.25}
-                  />
-                )}
+                <div className="relative grid md:grid-cols-[minmax(0,220px)_1fr] gap-6 md:gap-10 items-center p-8 md:p-10 lg:p-12">
+                  {/* Numeral + icon block - always on the left, on every row */}
+                  <div className="relative flex items-center justify-center h-32 md:h-full">
+                    <span className="text-[7rem] md:text-[8rem] font-black text-white/20 leading-none select-none drop-shadow-[0_2px_10px_rgba(0,0,0,0.35)]">
+                      {String(index + 1).padStart(2, "0")}
+                    </span>
+                    <Icon
+                      className="absolute text-red-400 drop-shadow-[0_2px_6px_rgba(0,0,0,0.5)] group-hover:scale-110 transition-transform duration-500"
+                      size={56}
+                      strokeWidth={1.25}
+                    />
+                  </div>
 
-                {/* Number */}
-                <div className="relative w-14 h-14 bg-gradient-to-br from-red-500 to-red-600 rounded-xl flex items-center justify-center mb-6 group-hover:scale-110 group-hover:rotate-3 transition-all duration-400 flex-shrink-0 shadow-md">
-                  <span className="text-white font-bold text-xl">
-                    {index + 1}
-                  </span>
-                </div>
-
-                {/* Content */}
-                <div className="relative flex-1 flex flex-col">
-                  <h3 className="text-2xl font-semibold text-gray-900 mb-4 group-hover:text-red-500 transition-colors">
-                    {program.title}
-                  </h3>
-
-                  <p className="text-gray-700 mb-6 leading-relaxed">
-                    {program.description}
-                  </p>
-
-                  <ul className="space-y-3 mt-2">
-                    {program.features.map((feature, i) => (
-                      <li key={i} className="flex items-start text-gray-800">
-                        <div className="w-2.5 h-2.5 bg-red-500 rounded-full mt-2.5 mr-3.5 flex-shrink-0" />
-                        <span className="text-sm md:text-base">
-                          {feature}
-                        </span>
-                      </li>
-                    ))}
-                  </ul>
+                  {/* Text block - always on the right */}
+                  <div>
+                    <h3 className="text-2xl md:text-3xl font-semibold text-white mb-3 group-hover:text-red-300 transition-colors drop-shadow-[0_2px_8px_rgba(0,0,0,0.55)]">
+                      {program.title}
+                    </h3>
+                    <p className="text-white/85 mb-5 leading-relaxed drop-shadow-[0_1px_5px_rgba(0,0,0,0.5)]">
+                      {program.description}
+                    </p>
+                    <ul className="grid sm:grid-cols-2 gap-x-8 gap-y-2.5">
+                      {program.features.map((feature, i) => (
+                        <li key={i} className="flex items-start text-white/90">
+                          <div className="w-2 h-2 bg-red-400 rounded-full mt-2 mr-3 flex-shrink-0" />
+                          <span className="text-sm md:text-base drop-shadow-[0_1px_4px_rgba(0,0,0,0.5)]">{feature}</span>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
                 </div>
               </div>
             );
@@ -169,25 +145,16 @@ export default function Programs() {
         </div>
       </div>
 
-      {/* Animation Styles */}
       <style>
         {`
           .ocean-float {
             animation: fadeIn 1.2s ease-out forwards,
                        floatBob 6s ease-in-out infinite;
           }
-
           @keyframes fadeIn {
-            from {
-              opacity: 0;
-              transform: translateY(10px);
-            }
-            to {
-              opacity: 1;
-              transform: translateY(0);
-            }
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
           }
-
           @keyframes floatBob {
             0%   { transform: translateY(0); }
             50%  { transform: translateY(-10px); }

@@ -1,6 +1,6 @@
 // src/pages/AboutUs.jsx
 import React from "react";
-import aboutBg from '@/assets/images/cloud.webp';
+import aboutBg from '@/assets/images/about.jpg';
 import { WINN_SERVICES, RENEWED_SERVICES, ORG } from "@/content/siteContent";
 
 export default function AboutUs() {
